@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "resolve-url-loader": "^5.0.0"
+  }
+}

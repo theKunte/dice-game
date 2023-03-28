@@ -1,0 +1,11 @@
+.home-view{
+
+    .game-view{
+        position: absolute;
+        background: white;
+        width: 50%;
+        margin-left: 200px;
+        margin-right: 200px;
+    }
+
+}
