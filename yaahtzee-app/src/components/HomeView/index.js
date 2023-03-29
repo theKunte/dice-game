@@ -1,12 +1,11 @@
-import './index.css';
+import "./index.css";
 
-const HomeView =() => {
-    return (
-        <div className='home-view'>
-            <div className='game-view'> 
-            </div>
-        </div>
-    )
-}
+const HomeView = () => {
+  return (
+    <div className="home-view">
+      <h1>Hello World</h1>
+    </div>
+  );
+};
 
 export default HomeView;
