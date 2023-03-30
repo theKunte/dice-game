@@ -37,16 +37,12 @@
   height: auto;
   width: auto;
   overflow: auto;
-  background-color: orange;
+  background-color: rgb(181, 80, 80);
   margin-bottom: 10px;
 }
 
 .dice-container {
   text-align: center;
-  padding: 2rem 2rem;
-  margin: 2rem;
-  width: 250px;
-  height: 250px;
 }
 .container {
   text-align: center;
@@ -55,16 +51,8 @@
 }
 
 .square {
-  height: 40px;
-  width: 40px;
-  background-color: white;
-  display: inline-block;
-  vertical-align: middle;
-  padding: 1rem 1rem;
-}
-
-.dice-image-conatiner {
-  background-color: white;
+  height: 15%;
+  width: 15%;
   display: inline-block;
   vertical-align: middle;
   padding: 1rem 1rem;
