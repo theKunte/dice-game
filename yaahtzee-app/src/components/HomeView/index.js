@@ -1,5 +1,6 @@
 import "./index.css";
 import React from "react";
+import DiceImage1 from "../../images/Dice1.png";
 
 const HomeView = () => {
   return (
@@ -20,6 +21,9 @@ const HomeView = () => {
       </div>
       <div className="dice-view">
         <p>The Dice will be here</p>
+        <div className="dice-container">
+          <img className="square" alt="dice" src={DiceImage1}></img>
+        </div>
       </div>
     </div>
   );
