@@ -1,11 +1,42 @@
-.home-view{
+.main-view {
+  padding-left: 100px;
+  padding-right: 90px;
+  position: initial;
+  height: 100%;
+  width: auto;
+  overflow: auto;
+  background-color: red;
+}
 
-    .game-view{
-        position: absolute;
-        background: white;
-        width: 50%;
-        margin-left: 200px;
-        margin-right: 200px;
-    }
+.lower-score-view {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  float: left;
 
+  background-color: aliceblue;
+}
+.upper-score-view {
+  position: relative;
+  float: right;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  background-color: cadetblue;
+}
+
+.roll-dice-bottom-view {
+  background-color: beige;
+  float: initial;
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+.roll-dice-button {
+}
+.dice-view {
+  height: 100%;
+  overflow: auto;
+  background-color: orange;
+  margin-bottom: 10px;
 }

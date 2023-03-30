@@ -4,8 +4,12 @@ import HomeView from "./components/HomeView";
 function App() {
   return (
     <div className="App">
-      <HomeView />
-      <header className="App-header"></header>
+      <header className="App-header">
+        <h1 className="h"> Welcome to Yahtzee</h1>
+      </header>
+      <div className="App-body">
+        <HomeView />
+      </div>
     </div>
   );
 }
