@@ -21,8 +21,9 @@ const HomeView = () => {
       </div>
       <div className="dice-view">
         <p>The Dice will be here</p>
-        <div className="dice-container">
-          <img className="square" alt="dice" src={DiceImage1}></img>
+        <div className="container">
+          <img className="square" src={DiceImage1} alt="1"></img>
+          <div style={{ width: "5px", display: "inline-block" }}></div>
         </div>
       </div>
     </div>

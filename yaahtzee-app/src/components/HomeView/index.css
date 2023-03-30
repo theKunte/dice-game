@@ -45,6 +45,22 @@
   text-align: center;
   padding: 2rem 2rem;
   margin: 2rem;
+  width: 250px;
+  height: 250px;
+}
+.container {
+  text-align: center;
+  padding: 2rem 2rem;
+  margin: 1rem;
+}
+
+.square {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 1rem 1rem;
 }
 
 .dice-image-conatiner {
