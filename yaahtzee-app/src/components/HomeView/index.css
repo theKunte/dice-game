@@ -7,64 +7,60 @@
   overflow: auto;
   background-color: red;
 }
+.score-container {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
 
 .lower-score-view {
   display: flex;
+  flex-direction: column;
   gap: 15px;
-  flex-wrap: wrap;
-  float: left;
   background-color: aliceblue;
+  width: 300px;
 }
+
 .upper-score-view {
-  position: relative;
-  float: right;
+  flex-wrap: wrap;
+  margin-top: 10px;
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
+
   margin-bottom: 20px;
   background-color: cadetblue;
+}
+.lower-square {
+  height: 10%;
+  width: 10%;
 }
 
 .roll-dice-bottom-view {
   background-color: beige;
   float: initial;
-  margin-top: 100px;
+  margin-top: 10px;
   margin-bottom: 10px;
 }
-.roll-dice-button {
-}
+
 .dice-view {
   height: auto;
   width: auto;
   overflow: auto;
-  background-color: orange;
+  background-color: rgb(181, 80, 80);
   margin-bottom: 10px;
 }
 
 .dice-container {
   text-align: center;
-  padding: 2rem 2rem;
-  margin: 2rem;
-  width: 250px;
-  height: 250px;
 }
 .container {
   text-align: center;
   padding: 2rem 2rem;
   margin: 1rem;
 }
-
 .square {
-  height: 40px;
-  width: 40px;
-  background-color: white;
-  display: inline-block;
-  vertical-align: middle;
-  padding: 1rem 1rem;
-}
-
-.dice-image-conatiner {
-  background-color: white;
+  height: 15%;
+  width: 15%;
   display: inline-block;
   vertical-align: middle;
   padding: 1rem 1rem;
