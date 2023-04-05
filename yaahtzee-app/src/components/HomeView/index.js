@@ -1,4 +1,4 @@
-import "./index.css";
+import "./styles.css";
 import React from "react";
 import DiceImage1 from "../../images/Dice1.png";
 import DiceImage2 from "../../images/Dice2.png";
