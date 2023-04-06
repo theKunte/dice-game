@@ -3,11 +3,11 @@ import Die from "./Die";
 import "../components/HomeView/styles.css";
 
 function DiceContainer() {
-  const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
+  const [imageIndex, setImageIndex] = useState([0, 0, 0, 0, 0]);
 
   const rollDice = () => {
     // Generate random number
-    setDiceValues([
+    setImageIndex([
       getRandomNumber(),
       getRandomNumber(),
       getRandomNumber(),
@@ -18,6 +18,8 @@ function DiceContainer() {
   const getRandomNumber = () => {
     return Math.floor(Math.random() * 6);
   };
+  const [heldDice, setHeldDice] = useState([false, false, false, false, false]);
+
   return (
     <div>
       <div className="roll-dice-bottom-view">
@@ -34,11 +36,11 @@ function DiceContainer() {
       <div className="dice-view">
         <p>The Dice will be here</p>
         <div className="container">
-          <Die diceValue={diceValues[0]} />
-          <Die diceValue={diceValues[1]} />
-          <Die diceValue={diceValues[2]} />
-          <Die diceValue={diceValues[3]} />
-          <Die diceValue={diceValues[4]} />
+          <Die imageIndex={imageIndex[0]} />
+          <Die imageIndex={imageIndex[1]} />
+          <Die imageIndex={imageIndex[2]} />
+          <Die imageIndex={imageIndex[3]} />
+          <Die imageIndex={imageIndex[4]} />
         </div>
       </div>
     </div>
