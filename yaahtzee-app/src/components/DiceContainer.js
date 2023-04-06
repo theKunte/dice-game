@@ -1,10 +1,15 @@
 import { useState, React } from "react";
 import Die from "./Die";
 import "../components/HomeView/styles.css";
+import "./HomeView/styles.css";
 
 function DiceContainer() {
-  const [imageIndex, setImageIndex] = useState([0, 0, 0, 0, 0]);
+  // Set up initial state for dice values and number of rolls remaining
 
+  const [imageIndex, setImageIndex] = useState([0, 0, 0, 0, 0]);
+  const [rollsRemaining, setRollsRemaining] = useState(3);
+
+  // function to roll the dice
   const rollDice = () => {
     // Generate random number
     setImageIndex([
@@ -14,6 +19,10 @@ function DiceContainer() {
       getRandomNumber(),
       getRandomNumber(),
     ]);
+  };
+
+  const holdDie = (index) => {
+    // setHeldDice([//set correct index of this shit array ])
   };
   const getRandomNumber = () => {
     return Math.floor(Math.random() * 6);
@@ -36,7 +45,11 @@ function DiceContainer() {
       <div className="dice-view">
         <p>The Dice will be here</p>
         <div className="container">
-          <Die imageIndex={imageIndex[0]} />
+          <Die
+            imageIndex={imageIndex[0]}
+            held={heldDice[0]}
+            onClick={holdDie}
+          />
           <Die imageIndex={imageIndex[1]} />
           <Die imageIndex={imageIndex[2]} />
           <Die imageIndex={imageIndex[3]} />

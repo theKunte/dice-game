@@ -9,8 +9,8 @@
 }
 .score-container {
   width: auto;
-  display: flex;
-  flex-direction: column;
+  display: inline-block;
+  vertical-align: center;
 }
 
 .lower-score-view {
@@ -18,14 +18,15 @@
   flex-direction: column;
   gap: 15px;
   background-color: aliceblue;
-  width: 300px;
+  width: 45%;
 }
 
 .upper-score-view {
   flex-wrap: wrap;
   margin-top: 10px;
-  display: flex;
+  flex-direction: column;
   gap: 15px;
+  width: 45%;
 
   margin-bottom: 20px;
   background-color: cadetblue;
@@ -50,18 +51,24 @@
   margin-bottom: 10px;
 }
 
-.dice-container {
-  text-align: center;
-}
 .container {
   text-align: center;
-  padding: 2rem 2rem;
-  margin: 1rem;
 }
 .square {
   height: 15%;
-  width: 15%;
+  width: 20%;
   display: inline-block;
-  vertical-align: middle;
-  padding: 1rem 1rem;
+  vertical-align: center;
+}
+
+.held-die {
+  border: 1px;
+  background-color: aquamarine;
+}
+
+.normal {
+  height: 25%;
+  width: 20%;
+  display: inline-block;
+  padding-bottom: 1rem;
 }
