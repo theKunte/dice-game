@@ -17,7 +17,7 @@ function Die(props) {
   ];
 
   const [image, setImage] = useState(diceImages[0]);
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState();
   const [holdDice, setholdDice] = useState(false);
 
   useEffect(() => {
@@ -31,8 +31,8 @@ function Die(props) {
 
   return (
     <div className={holdDice ? "held-die" : "normal"}>
-      <img className="square" src={image} alt="1"></img>
-      {/* <p>{value}</p> */}
+      <img className="square" src={image} alt="dice"></img>
+      <p>{value}</p>
       <div style={{ width: "5px", display: "inline-block" }}></div>
     </div>
   );

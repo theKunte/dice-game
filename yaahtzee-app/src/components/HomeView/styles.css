@@ -62,8 +62,11 @@
 }
 
 .held-die {
-  border: 1px;
-  background-color: aquamarine;
+  background-color: rgb(214, 216, 204);
+  height: 25%;
+  width: 20%;
+  display: inline-block;
+  vertical-align: center;
 }
 
 .normal {
