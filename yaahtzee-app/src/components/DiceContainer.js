@@ -17,6 +17,9 @@ function DiceContainer() {
   // function to roll the dice
   const rollDice = () => {
     // Generate random number
+    //TODO:
+    // Add condition in rollDice function =>
+    // heldDie[index] ? doNothing() : getRandomNumber
     setImageIndex([
       getRandomNumber(),
       getRandomNumber(),
@@ -51,12 +54,37 @@ function DiceContainer() {
       </div>
       <div className="dice-view">
         <p>The Dice will be here</p>
-        <div className="container" onClick={() => holdDie(0)}>
-          <Die imageIndex={imageIndex[0]} held={heldDice[0]} />
-          <Die imageIndex={imageIndex[1]} />
-          <Die imageIndex={imageIndex[2]} />
-          <Die imageIndex={imageIndex[3]} />
-          <Die imageIndex={imageIndex[4]} />
+        <div className="container">
+          <Die
+            imageIndex={imageIndex[0]}
+            clickDie={holdDie}
+            held={heldDice[0]}
+            dieIndex={0}
+          />
+          <Die
+            imageIndex={imageIndex[1]}
+            clickDie={holdDie}
+            held={heldDice[1]}
+            dieIndex={1}
+          />
+          <Die
+            imageIndex={imageIndex[2]}
+            clickDie={holdDie}
+            held={heldDice[2]}
+            dieIndex={2}
+          />
+          <Die
+            imageIndex={imageIndex[3]}
+            clickDie={holdDie}
+            held={heldDice[3]}
+            dieIndex={3}
+          />
+          <Die
+            imageIndex={imageIndex[4]}
+            clickDie={holdDie}
+            held={heldDice[4]}
+            dieIndex={4}
+          />
         </div>
       </div>
     </div>
