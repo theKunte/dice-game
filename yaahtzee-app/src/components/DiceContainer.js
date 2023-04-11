@@ -57,31 +57,31 @@ function DiceContainer() {
         <div className="container">
           <Die
             imageIndex={imageIndex[0]}
-            clickDie={holdDie}
+            handleClickDie={holdDie}
             held={heldDice[0]}
             dieIndex={0}
           />
           <Die
             imageIndex={imageIndex[1]}
-            clickDie={holdDie}
+            handleClickDie={holdDie}
             held={heldDice[1]}
             dieIndex={1}
           />
           <Die
             imageIndex={imageIndex[2]}
-            clickDie={holdDie}
+            handleClickDie={holdDie}
             held={heldDice[2]}
             dieIndex={2}
           />
           <Die
             imageIndex={imageIndex[3]}
-            clickDie={holdDie}
+            handleClickDie={holdDie}
             held={heldDice[3]}
             dieIndex={3}
           />
           <Die
             imageIndex={imageIndex[4]}
-            clickDie={holdDie}
+            handleClickDie={holdDie}
             held={heldDice[4]}
             dieIndex={4}
           />

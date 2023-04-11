@@ -30,7 +30,10 @@ function Die(props) {
   }, [props.held]);
 
   return (
-    <div className="square" onClick={() => props.clickDie(props.dieIndex)}>
+    <div
+      className="square"
+      onClick={() => props.handleClickDie(props.dieIndex)}
+    >
       <div className="container">
         <img
           className={holdDice ? "held-die" : "normal"}
