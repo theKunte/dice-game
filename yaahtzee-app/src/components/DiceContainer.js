@@ -17,17 +17,13 @@ function DiceContainer() {
   // function to roll the dice
   const rollDice = () => {
     if (rollsRemaining > 0) {
-      // Generate random number
-      //TODO:
-      // Add condition in rollDice function =>
-      // heldDie[index] ? doNothing() : getRandomNumber
-      setImageIndex([
-        getRandomNumber(),
-        getRandomNumber(),
-        getRandomNumber(),
-        getRandomNumber(),
-        getRandomNumber(),
-      ]);
+      const newImageIndex = [...imageIndex];
+      for (let i = 0; i < heldDice.length; i++) {
+        if (!heldDice[i]) {
+          newImageIndex[i] = getRandomNumber();
+        }
+      }
+      setImageIndex(newImageIndex);
       setRollsRemaining(rollsRemaining - 1);
     }
   };
