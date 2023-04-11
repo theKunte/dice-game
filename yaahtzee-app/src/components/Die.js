@@ -30,10 +30,19 @@ function Die(props) {
   }, [props.held]);
 
   return (
-    <div className={holdDice ? "held-die" : "normal"}>
-      <img className="square" src={image} alt="dice"></img>
-      <p>{value}</p>
-      <div style={{ width: "5px", display: "inline-block" }}></div>
+    <div
+      className="square"
+      onClick={() => props.handleClickDie(props.dieIndex)}
+    >
+      <div className="container">
+        <img
+          className={holdDice ? "held-die" : "normal"}
+          src={image}
+          alt="dice"
+        ></img>
+        <p>{value}</p>
+        <div style={{ width: "5px", display: "inline-block" }}></div>
+      </div>
     </div>
   );
 }

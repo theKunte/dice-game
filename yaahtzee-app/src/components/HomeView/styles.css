@@ -55,14 +55,14 @@
   text-align: center;
 }
 .square {
-  height: 15%;
+  height: 25%;
   width: 20%;
   display: inline-block;
   vertical-align: center;
 }
 
 .held-die {
-  background-color: rgb(214, 216, 204);
+  background-color: rgb(40, 103, 106);
   height: 25%;
   width: 20%;
   display: inline-block;
