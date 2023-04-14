@@ -38,6 +38,7 @@ function DiceContainer() {
   const getRandomNumber = () => {
     return Math.floor(Math.random() * 6);
   };
+
   return (
     <div>
       <div className="roll-dice-bottom-view">
