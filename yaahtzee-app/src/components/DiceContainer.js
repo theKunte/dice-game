@@ -12,21 +12,20 @@ function DiceContainer() {
 
   //The user should only be able to toll the dice 3 times total.
   //After the 3rd time the user has to select a field in the score board
-  // const [rollsRemaining, setRollsRemaining] = useState(3);
+  const [rollsRemaining, setRollsRemaining] = useState(3);
 
   // function to roll the dice
   const rollDice = () => {
-    // Generate random number
-    //TODO:
-    // Add condition in rollDice function =>
-    // heldDie[index] ? doNothing() : getRandomNumber
-    setImageIndex([
-      getRandomNumber(),
-      getRandomNumber(),
-      getRandomNumber(),
-      getRandomNumber(),
-      getRandomNumber(),
-    ]);
+    if (rollsRemaining > 0) {
+      const newImageIndex = [...imageIndex];
+      for (let i = 0; i < heldDice.length; i++) {
+        if (!heldDice[i]) {
+          newImageIndex[i] = getRandomNumber();
+        }
+      }
+      setImageIndex(newImageIndex);
+      setRollsRemaining(rollsRemaining - 1);
+    }
   };
 
   const holdDie = (index) => {
@@ -39,6 +38,7 @@ function DiceContainer() {
   const getRandomNumber = () => {
     return Math.floor(Math.random() * 6);
   };
+
   return (
     <div>
       <div className="roll-dice-bottom-view">
@@ -47,8 +47,9 @@ function DiceContainer() {
             type="button"
             className="btn btn-outline-primary"
             onClick={rollDice}
+            disabled={rollsRemaining === 0}
           >
-            Roll Dice
+            {rollsRemaining === 0 ? "No rolls remaining" : "Roll Dice"}
           </button>
         </div>
       </div>
