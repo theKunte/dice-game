@@ -9,33 +9,34 @@
 }
 .score-container {
   width: auto;
-  display: inline-block;
-  vertical-align: center;
+  display: block;
 }
 
 .lower-score-view {
-  display: flex;
-  flex-direction: column;
+  display: inline-flex;
   gap: 15px;
   background-color: aliceblue;
   width: 45%;
+  height: 100%;
 }
 
 .upper-score-view {
-  flex-wrap: wrap;
-  margin-top: 10px;
+  display: inline-flex;
   flex-direction: column;
   gap: 15px;
   width: 45%;
-
-  margin-bottom: 20px;
+  height: 100%;
   background-color: cadetblue;
 }
-.lower-square {
+.upper-square {
   height: 10%;
   width: 10%;
 }
 
+.btn {
+  display: block;
+  width: 20%;
+}
 .roll-dice-bottom-view {
   background-color: beige;
   float: initial;
@@ -74,4 +75,15 @@
   width: 20%;
   display: inline-block;
   padding-bottom: 1rem;
+}
+
+table {
+  font-family: arial, sans-serif;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
 }
