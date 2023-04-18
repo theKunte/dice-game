@@ -1,13 +1,4 @@
-const scoreValuesForUpperSection = (diceValues, numberToScore) => {
-  let score = 0;
-  for (let i = 0; i < diceValues.length; i++) {
-    if ((diceValues[i] = numberToScore)) {
-      score += diceValues[i];
-    }
-  }
-  return score;
-};
-
+// Upper Score
 export const scoreOnes = (diceValues) => {
   return scoreValuesForUpperSection(diceValues, 1);
 };
@@ -29,6 +20,31 @@ export const scoreFives = (diceValues) => {
 export const scoreSixes = (diceValues) => {
   return scoreValuesForUpperSection(diceValues, 6);
 };
+
+const scoreValuesForUpperSection = (diceValues, numberToScore) => {
+  let score = 0;
+  for (let i = 0; i < diceValues.length; i++) {
+    if ((diceValues[i] = numberToScore)) {
+      score += diceValues[i];
+    }
+  }
+  return score;
+};
+const calculateUpperTotal = (diceValues) => {
+  let total = 0;
+  for (let i = 1; i <= 6; i++) {
+    const score = scoreValuesForUpperSection(diceValues, i);
+    total += score;
+  }
+  return total;
+};
+
+export const calculateUpperBonus = (diceValues) => {
+  const upperTotal = calculateUpperTotal(diceValues);
+  return upperTotal >= 63 ? 35 : 0;
+};
+
+// Lower Score
 
 export const xOfAKind = (diceValues, x) => {
   // [5,1,5,2,5]
@@ -57,10 +73,43 @@ export const threeOfAKind = (diceValues) => {
 export const fourOfAKind = (diceValues) => {
   return xOfAKind(diceValues, 4);
 };
-export const fullHouse = (diceValues) => {};
 
-export const smallStraight = (diceValues) => {};
-export const largeStraight = (diceValues) => {};
+export const fullHouse = (diceValues) => {
+  const counts = {};
+  for (let i = 0; i < diceValues.length; i++) {
+    counts[diceValues[i]] = (counts[diceValues[i]] || 0) + 1;
+  }
+  const countsValues = Object.values(counts);
+  if (
+    countsValues.length === 2 &&
+    countsValues.includes(2) &&
+    countsValues.includes(3)
+  ) {
+    return 25;
+  } else {
+    return 0;
+  }
+};
+
+export const smallStraight = (diceValues) => {
+  const sortedDice = diceValues.sort((a, b) => a - b);
+  const uniqueDice = [...new Set(sortedDice)];
+  const isSmallStraight =
+    uniqueDice.some((value, index) => value + 1 === uniqueDice[index + 1]) &&
+    uniqueDice
+      .slice(0, 3)
+      .every((value, index) => value + 1 === uniqueDice[index + 1]);
+  return isSmallStraight ? 30 : 0;
+};
+export const largeStraight = (diceValues) => {
+  const uniqueDice = [...new Set(diceValues)];
+  if (uniqueDice.length !== 5) return 0;
+  const sortedDice = uniqueDice.sort((a, b) => a - b);
+  if (sortedDice[4] - sortedDice[0] === 4) {
+    return 40;
+  }
+  return 0;
+};
 
 export const yahtzee = (diceValues) => {
   // Lets check if all values in the array are the same
@@ -81,3 +130,8 @@ export const chance = (diceValues) => {
   }
   return score;
 };
+
+export const bonusYahtzee = () => {};
+//if yahtzee occured add bonus points
+// if yahtzee has been crossed out no bonus option
+// will have to add useState to keep track if a catergory has been crossed out
