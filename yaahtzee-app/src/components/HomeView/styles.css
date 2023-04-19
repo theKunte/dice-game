@@ -14,9 +14,8 @@
 
 .lower-score-view {
   display: inline-flex;
-  gap: 15px;
   background-color: aliceblue;
-  width: 45%;
+  width: 50%;
   height: 100%;
 }
 
@@ -24,7 +23,7 @@
   display: inline-flex;
   flex-direction: column;
   gap: 15px;
-  width: 45%;
+  width: 50%;
   height: 100%;
   background-color: cadetblue;
 }
@@ -83,7 +82,6 @@ table {
 
 td,
 th {
-  border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }

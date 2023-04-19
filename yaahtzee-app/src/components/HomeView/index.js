@@ -17,8 +17,12 @@ function HomeView() {
           <div className="upper-score-view">
             <table>
               <tr>
-                <th>Upper Section</th>
-                <th>Score</th>
+                <th>
+                  <mark>Upper Section</mark>
+                </th>
+                <th>
+                  <mark>Score</mark>
+                </th>
               </tr>
               <tr>
                 <td>
@@ -73,8 +77,12 @@ function HomeView() {
           <div className="lower-score-view">
             <table>
               <tr>
-                <th>Lower Section</th>
-                <th>Score</th>
+                <th>
+                  <mark>Lower Section</mark>
+                </th>
+                <th>
+                  <mark>Score</mark>
+                </th>
               </tr>
               <tr>
                 <td>3 Of A Kind</td>
