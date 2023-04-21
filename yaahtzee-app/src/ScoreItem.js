@@ -31,6 +31,7 @@ const scoreValuesForUpperSection = (diceValues, numberToScore) => {
   }
   return score;
 };
+
 const calculateUpperTotal = (diceValues) => {
   let total = 0;
   for (let i = 1; i <= 6; i++) {

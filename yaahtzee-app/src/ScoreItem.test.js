@@ -1,10 +1,13 @@
 // Test functions for ScoreItems.
 
-import { fullHouse } from "./ScoreItem.js";
+import { fullHouse, scoreFours } from "./ScoreItem.js";
 import { smallStraight, largeStraight } from "./ScoreItem.js";
 import { yahtzee, chance } from "./ScoreItem.js";
 import { scoreOnes } from "./ScoreItem.js";
 import { scoreTwos } from "./ScoreItem.js";
+import { scoreThree } from "./ScoreItem.js";
+import { scoreFives } from "./ScoreItem.js";
+import { scoreSixes } from "./ScoreItem.js";
 
 // Upper Section Test 1-6
 
@@ -23,6 +26,7 @@ describe("scoreOnes", () => {
   });
 });
 
+// Twos test
 describe("scoreTwos", () => {
   it("calculates the score for Twos correctly", () => {
     const diceValues = [1, 1, 2, 3, 4];
@@ -39,6 +43,66 @@ describe("scoreTwos", () => {
   it("caluclates 0 if no Twos are rolled", () => {
     const diceValues = [3, 3, 1, 5, 6];
     const result = scoreTwos(diceValues);
+    expect(result).toEqual(0);
+  });
+});
+
+// Three Test
+describe("scoreThrees", () => {
+  it("calculates the score for Three correctly", () => {
+    const diceValues = [1, 1, 3, 3, 1];
+    const result = scoreThree(diceValues);
+    expect(result).toEqual(6);
+  });
+
+  it("returns 0 if no Three are rolled", () => {
+    const diceValues = [2, 2, 2, 5, 6];
+    const result = scoreThree(diceValues);
+    expect(result).toEqual(0);
+  });
+});
+
+// Fours Test
+describe("scoreFours", () => {
+  it("calculates the score for Four correctly", () => {
+    const diceValues = [4, 4, 4, 4, 1];
+    const result = scoreFours(diceValues);
+    expect(result).toEqual(16);
+  });
+
+  it("returns 0 if no Four are rolled", () => {
+    const diceValues = [2, 2, 2, 5, 6];
+    const result = scoreFours(diceValues);
+    expect(result).toEqual(0);
+  });
+});
+
+// Fives Test
+describe("scoreFives", () => {
+  it("calculates the score for Fives correctly", () => {
+    const diceValues = [5, 5, 5, 5, 1];
+    const result = scoreFives(diceValues);
+    expect(result).toEqual(20);
+  });
+
+  it("returns 0 if no Four are rolled", () => {
+    const diceValues = [2, 2, 2, 3, 6];
+    const result = scoreFives(diceValues);
+    expect(result).toEqual(0);
+  });
+});
+
+// Sizes Test
+describe("scoreSixes", () => {
+  it("calculates the score for Fives correctly", () => {
+    const diceValues = [5, 6, 6, 5, 1];
+    const result = scoreSixes(diceValues);
+    expect(result).toEqual(12);
+  });
+
+  it("returns 0 if no Four are rolled", () => {
+    const diceValues = [2, 1, 2, 3, 4];
+    const result = scoreSixes(diceValues);
     expect(result).toEqual(0);
   });
 });
