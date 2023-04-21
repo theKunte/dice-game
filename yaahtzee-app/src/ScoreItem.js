@@ -24,7 +24,8 @@ export const scoreSixes = (diceValues) => {
 const scoreValuesForUpperSection = (diceValues, numberToScore) => {
   let score = 0;
   for (let i = 0; i < diceValues.length; i++) {
-    if ((diceValues[i] = numberToScore)) {
+    if (diceValues[i] === numberToScore) {
+      // use triple equals operator to check equality
       score += diceValues[i];
     }
   }
