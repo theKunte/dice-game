@@ -28,54 +28,54 @@ function HomeView() {
                 <td>
                   <img className="upper-square" src={DiceImage1} alt="1"></img>
                 </td>
-                <td></td>
+                <td id="scoreOnes">-</td>
               </tr>
               <tr>
                 <td>
                   <img className="upper-square" src={DiceImage2} alt="2"></img>
                 </td>
-                <td></td>
+                <td id="scoreTwos">-</td>
               </tr>
               <tr>
                 <td>
                   <img className="upper-square" src={DiceImage3} alt="3"></img>
                 </td>
-                <td></td>
+                <td id="scoreThrees">-</td>
               </tr>
               <tr>
                 <td>
                   <img className="upper-square" src={DiceImage4} alt="4"></img>
                 </td>
-                <td></td>
+                <td id="scoreFours">-</td>
               </tr>
               <tr>
                 <td>
                   <img className="upper-square" src={DiceImage5} alt="5"></img>
                 </td>
-                <td></td>
+                <td id="scoreFives">-</td>
               </tr>
               <tr>
                 <td>
                   <img className="upper-square" src={DiceImage6} alt="6"></img>
                 </td>
-                <td></td>
+                <td id="scoreSixes">-</td>
               </tr>
               <tr>
                 <td>Total Score</td>
-                <td></td>
+                <td>-</td>
               </tr>
               <tr>
                 <td>Bonus</td>
-                <td></td>
+                <td>-</td>
               </tr>
               <tr>
                 <td>Total</td>
-                <td></td>
+                <td>-</td>
               </tr>
             </table>
           </div>
           <div className="lower-score-view">
-            <table>
+            <table id="upperScore">
               <tr>
                 <th>
                   <mark>Lower Section</mark>
@@ -86,39 +86,39 @@ function HomeView() {
               </tr>
               <tr>
                 <td>3 Of A Kind</td>
-                <td></td>
+                <td id="scoreThreeOfAKind">-</td>
               </tr>
               <tr>
                 <td>4 Of A Kind</td>
-                <td></td>
+                <td id="scoreFourOfAKind">-</td>
               </tr>
               <tr>
                 <td>Full House</td>
-                <td></td>
+                <td id="scoreFullHouse">-</td>
               </tr>
               <tr>
                 <td>SM Straight</td>
-                <td></td>
+                <td id="scoreSmallStraight">-</td>
               </tr>
               <tr>
                 <td>LG Straight</td>
-                <td></td>
+                <td id="scoreLargeStraight">-</td>
               </tr>
               <tr>
                 <td>YAHTZEE</td>
-                <td></td>
+                <td id="scoreYahtzee">-</td>
               </tr>
               <tr>
                 <td>CHANCE</td>
-                <td></td>
+                <td id="scoreChanceScore">-</td>
               </tr>
               <tr>
                 <td>BONUS YAHTZEE</td>
-                <td></td>
+                <td>-</td>
               </tr>
               <tr>
                 <td>Total Score</td>
-                <td></td>
+                <td>-</td>
               </tr>
             </table>
           </div>
