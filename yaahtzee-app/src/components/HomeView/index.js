@@ -14,16 +14,113 @@ function HomeView() {
       <div className="game-score">
         <h1>This is the main Game view</h1>
         <div className="score-container">
-          <div className="lower-score-view">
-            <img className="lower-square" src={DiceImage1} alt="1"></img>
-            <img className="lower-square" src={DiceImage2} alt="2"></img>
-            <img className="lower-square" src={DiceImage3} alt="3"></img>
-            <img className="lower-square" src={DiceImage4} alt="4"></img>
-            <img className="lower-square" src={DiceImage5} alt="5"></img>
-            <img className="lower-square" src={DiceImage6} alt="6"></img>
-          </div>
           <div className="upper-score-view">
-            <p> test upper score</p>
+            <table>
+              <tr>
+                <th>
+                  <mark>Upper Section</mark>
+                </th>
+                <th>
+                  <mark>Score</mark>
+                </th>
+              </tr>
+              <tr>
+                <td>
+                  <img className="upper-square" src={DiceImage1} alt="1"></img>
+                </td>
+                <td id="scoreOnes">-</td>
+              </tr>
+              <tr>
+                <td>
+                  <img className="upper-square" src={DiceImage2} alt="2"></img>
+                </td>
+                <td id="scoreTwos">-</td>
+              </tr>
+              <tr>
+                <td>
+                  <img className="upper-square" src={DiceImage3} alt="3"></img>
+                </td>
+                <td id="scoreThrees">-</td>
+              </tr>
+              <tr>
+                <td>
+                  <img className="upper-square" src={DiceImage4} alt="4"></img>
+                </td>
+                <td id="scoreFours">-</td>
+              </tr>
+              <tr>
+                <td>
+                  <img className="upper-square" src={DiceImage5} alt="5"></img>
+                </td>
+                <td id="scoreFives">-</td>
+              </tr>
+              <tr>
+                <td>
+                  <img className="upper-square" src={DiceImage6} alt="6"></img>
+                </td>
+                <td id="scoreSixes">-</td>
+              </tr>
+              <tr>
+                <td>Total Score</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Bonus</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>-</td>
+              </tr>
+            </table>
+          </div>
+          <div className="lower-score-view">
+            <table id="upperScore">
+              <tr>
+                <th>
+                  <mark>Lower Section</mark>
+                </th>
+                <th>
+                  <mark>Score</mark>
+                </th>
+              </tr>
+              <tr>
+                <td>3 Of A Kind</td>
+                <td id="scoreThreeOfAKind">-</td>
+              </tr>
+              <tr>
+                <td>4 Of A Kind</td>
+                <td id="scoreFourOfAKind">-</td>
+              </tr>
+              <tr>
+                <td>Full House</td>
+                <td id="scoreFullHouse">-</td>
+              </tr>
+              <tr>
+                <td>SM Straight</td>
+                <td id="scoreSmallStraight">-</td>
+              </tr>
+              <tr>
+                <td>LG Straight</td>
+                <td id="scoreLargeStraight">-</td>
+              </tr>
+              <tr>
+                <td>YAHTZEE</td>
+                <td id="scoreYahtzee">-</td>
+              </tr>
+              <tr>
+                <td>CHANCE</td>
+                <td id="scoreChanceScore">-</td>
+              </tr>
+              <tr>
+                <td>BONUS YAHTZEE</td>
+                <td>-</td>
+              </tr>
+              <tr>
+                <td>Total Score</td>
+                <td>-</td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
