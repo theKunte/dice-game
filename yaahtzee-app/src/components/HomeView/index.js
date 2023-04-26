@@ -1,5 +1,5 @@
 import "./styles.css";
-import React from "react";
+import React, { useEffect } from "react";
 import DiceImage1 from "../../images/Dice1.png";
 import DiceImage2 from "../../images/Dice2.png";
 import DiceImage3 from "../../images/Dice3.png";
@@ -7,8 +7,23 @@ import DiceImage4 from "../../images/Dice4.png";
 import DiceImage5 from "../../images/Dice5.png";
 import DiceImage6 from "../../images/Dice6.png";
 import DiceContainer from "../DiceContainer";
+import {
+  scoreOnes,
+  scoreTwos,
+  scoreThree,
+  scoreFours,
+  scoreFives,
+  scoreSixes,
+} from "../../ScoreItem";
 
 function HomeView() {
+  // test without actual diceValues from DiceContainer
+  useEffect(() => {
+    const diceValues = [1, 2, 3, 1, 5]; // replace this with your actual dice values
+    const onesScore = scoreOnes(diceValues);
+    document.getElementById("scoreOnes").textContent = onesScore;
+  }, []);
+
   return (
     <div className="main-view">
       <div className="game-score">

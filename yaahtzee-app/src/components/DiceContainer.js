@@ -6,7 +6,7 @@ import "./HomeView/styles.css";
 function DiceContainer() {
   // Set up initial state for dice values and number of rolls remaining
 
-  const [imageIndex, setImageIndex] = useState([0, 0, 0, 0, 0]);
+  const [imageIndex, setImageIndex] = useState([1, 0, 0, 0, 0]);
   // heldDice is current State and setHeldDice is the function that allows to update the state
   const [heldDice, setHeldDice] = useState([false, false, false, false, false]);
 
