@@ -15,15 +15,9 @@ import {
   scoreFives,
   scoreSixes,
 } from "../../ScoreItem";
+import ScoreCategory from "../ScoreCategory";
 
 function HomeView() {
-  // test without actual diceValues from DiceContainer
-  useEffect(() => {
-    const diceValues = [1, 2, 3, 1, 5]; // replace this with your actual dice values
-    const onesScore = scoreOnes(diceValues);
-    document.getElementById("scoreOnes").textContent = onesScore;
-  }, []);
-
   return (
     <div className="main-view">
       <div className="game-score">
@@ -39,42 +33,42 @@ function HomeView() {
                   <mark>Score</mark>
                 </th>
               </tr>
-              <tr>
-                <td>
-                  <img className="upper-square" src={DiceImage1} alt="1"></img>
-                </td>
-                <td id="scoreOnes">-</td>
-              </tr>
-              <tr>
-                <td>
-                  <img className="upper-square" src={DiceImage2} alt="2"></img>
-                </td>
-                <td id="scoreTwos">-</td>
-              </tr>
-              <tr>
-                <td>
-                  <img className="upper-square" src={DiceImage3} alt="3"></img>
-                </td>
-                <td id="scoreThrees">-</td>
-              </tr>
-              <tr>
-                <td>
-                  <img className="upper-square" src={DiceImage4} alt="4"></img>
-                </td>
-                <td id="scoreFours">-</td>
-              </tr>
-              <tr>
-                <td>
-                  <img className="upper-square" src={DiceImage5} alt="5"></img>
-                </td>
-                <td id="scoreFives">-</td>
-              </tr>
-              <tr>
-                <td>
-                  <img className="upper-square" src={DiceImage6} alt="6"></img>
-                </td>
-                <td id="scoreSixes">-</td>
-              </tr>
+              <ScoreCategory
+                image={DiceImage1}
+                scoreFunction={scoreOnes}
+                diceValues={[1, 2, 3, 4, 5]}
+                alt="Score Category 1"
+              />
+              <ScoreCategory
+                image={DiceImage2}
+                scoreFunction={scoreTwos}
+                diceValues={[1, 2, 3, 4, 5]}
+                alt="Score Category 2"
+              />
+              <ScoreCategory
+                image={DiceImage3}
+                scoreFunction={scoreThree}
+                diceValues={[1, 2, 3, 4, 5]}
+                alt="Score Category 3"
+              />
+              <ScoreCategory
+                image={DiceImage4}
+                scoreFunction={scoreFours}
+                diceValues={[1, 2, 3, 4, 5]}
+                alt="Score Category 4"
+              />
+              <ScoreCategory
+                image={DiceImage5}
+                scoreFunction={scoreFives}
+                diceValues={[1, 2, 3, 4, 5]}
+                alt="Score Category 5"
+              />
+              <ScoreCategory
+                image={DiceImage6}
+                scoreFunction={scoreSixes}
+                diceValues={[1, 2, 3, 4, 5]}
+                alt="Score Category 6"
+              />
               <tr>
                 <td>Total Score</td>
                 <td>-</td>
