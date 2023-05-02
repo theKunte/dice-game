@@ -14,6 +14,15 @@ import {
   scoreFours,
   scoreFives,
   scoreSixes,
+  calculateUpperTotal,
+  calculateUpperBonus,
+  threeOfAKind,
+  fourOfAKind,
+  fullHouse,
+  smallStraight,
+  largeStraight,
+  yahtzee,
+  chance,
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
@@ -80,10 +89,12 @@ function HomeView() {
                 <td>Total Score</td>
                 <td>-</td>
               </tr>
-              <tr>
-                <td>Bonus</td>
-                <td>-</td>
-              </tr>
+              <ScoreCategory
+                // add image
+                scoreFunction={calculateUpperBonus}
+                diceValues={diceValues}
+                alt="Upper Bonus?"
+              />
               <tr>
                 <td>Total</td>
                 <td>-</td>
@@ -100,34 +111,48 @@ function HomeView() {
                   <mark>Score</mark>
                 </th>
               </tr>
-              <tr>
-                <td>3 Of A Kind</td>
-                <td id="scoreThreeOfAKind">-</td>
-              </tr>
-              <tr>
-                <td>4 Of A Kind</td>
-                <td id="scoreFourOfAKind">-</td>
-              </tr>
-              <tr>
-                <td>Full House</td>
-                <td id="scoreFullHouse">-</td>
-              </tr>
-              <tr>
-                <td>SM Straight</td>
-                <td id="scoreSmallStraight">-</td>
-              </tr>
-              <tr>
-                <td>LG Straight</td>
-                <td id="scoreLargeStraight">-</td>
-              </tr>
-              <tr>
-                <td>YAHTZEE</td>
-                <td id="scoreYahtzee">-</td>
-              </tr>
-              <tr>
-                <td>CHANCE</td>
-                <td id="scoreChanceScore">-</td>
-              </tr>
+              <ScoreCategory
+                // add image
+                scoreFunction={threeOfAKind}
+                diceValues={diceValues}
+                alt="3 of A Kind"
+              />
+              <ScoreCategory
+                // add image
+                scoreFunction={fourOfAKind}
+                diceValues={diceValues}
+                alt="4 of A Kind"
+              />
+              <ScoreCategory
+                // add image
+                scoreFunction={fullHouse}
+                diceValues={diceValues}
+                alt="Full House"
+              />
+              <ScoreCategory
+                // add image
+                scoreFunction={smallStraight}
+                diceValues={diceValues}
+                alt="Small Straight"
+              />
+              <ScoreCategory
+                // add image
+                scoreFunction={largeStraight}
+                diceValues={diceValues}
+                alt="Large Straight"
+              />
+              <ScoreCategory
+                // add image
+                scoreFunction={yahtzee}
+                diceValues={diceValues}
+                alt="YAHTZEE"
+              />
+              <ScoreCategory
+                // add image
+                scoreFunction={chance}
+                diceValues={diceValues}
+                alt="Chance"
+              />
               <tr>
                 <td>BONUS YAHTZEE</td>
                 <td>-</td>
