@@ -4,9 +4,11 @@ export default function ScoreCategory(props) {
   const [categoryScore, setCategoryScore] = useState(null);
   const [used, setUsed] = useState(false);
   const handleClick = () => {
-    const score = props.scoreFunction(props.diceValues);
-    setCategoryScore(score);
-    setUsed(true);
+    if (!used) {
+      const score = props.scoreFunction(props.diceValues);
+      setCategoryScore(score);
+      setUsed(true);
+    }
   };
 
   return (

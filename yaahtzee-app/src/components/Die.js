@@ -26,6 +26,10 @@ function Die(props) {
   }, [props.imageIndex]);
 
   useEffect(() => {
+    props.updateDiceValues(props.dieIndex, value);
+  }, [value]);
+
+  useEffect(() => {
     setholdDice(props.held);
   }, [props.held]);
 

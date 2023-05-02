@@ -1,5 +1,5 @@
 import "./styles.css";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import DiceImage1 from "../../images/Dice1.png";
 import DiceImage2 from "../../images/Dice2.png";
 import DiceImage3 from "../../images/Dice3.png";
@@ -18,6 +18,13 @@ import {
 import ScoreCategory from "../ScoreCategory";
 
 function HomeView() {
+  // Game state between Dice and Scoreboard
+  const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
+
+  const updateDiceValues = (dieIndex, dieValue) => {
+    diceValues[dieIndex] = dieValue;
+  };
+
   return (
     <div className="main-view">
       <div className="game-score">
@@ -36,37 +43,37 @@ function HomeView() {
               <ScoreCategory
                 image={DiceImage1}
                 scoreFunction={scoreOnes}
-                diceValues={[1, 2, 3, 4, 5]}
+                diceValues={diceValues}
                 alt="Score Category 1"
               />
               <ScoreCategory
                 image={DiceImage2}
                 scoreFunction={scoreTwos}
-                diceValues={[1, 2, 3, 4, 5]}
+                diceValues={diceValues}
                 alt="Score Category 2"
               />
               <ScoreCategory
                 image={DiceImage3}
                 scoreFunction={scoreThree}
-                diceValues={[1, 2, 3, 4, 5]}
+                diceValues={diceValues}
                 alt="Score Category 3"
               />
               <ScoreCategory
                 image={DiceImage4}
                 scoreFunction={scoreFours}
-                diceValues={[1, 2, 3, 4, 5]}
+                diceValues={diceValues}
                 alt="Score Category 4"
               />
               <ScoreCategory
                 image={DiceImage5}
                 scoreFunction={scoreFives}
-                diceValues={[1, 2, 3, 4, 5]}
+                diceValues={diceValues}
                 alt="Score Category 5"
               />
               <ScoreCategory
                 image={DiceImage6}
                 scoreFunction={scoreSixes}
-                diceValues={[1, 2, 3, 4, 5]}
+                diceValues={diceValues}
                 alt="Score Category 6"
               />
               <tr>
@@ -133,7 +140,7 @@ function HomeView() {
           </div>
         </div>
       </div>
-      <DiceContainer />
+      <DiceContainer updateDiceValues={updateDiceValues} />
     </div>
   );
 }

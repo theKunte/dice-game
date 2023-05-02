@@ -3,7 +3,7 @@ import Die from "./Die";
 import "../components/HomeView/styles.css";
 import "./HomeView/styles.css";
 
-function DiceContainer() {
+function DiceContainer(props) {
   // Set up initial state for dice values and number of rolls remaining
 
   const [imageIndex, setImageIndex] = useState([0, 0, 0, 0, 0]);
@@ -59,30 +59,35 @@ function DiceContainer() {
         <div className="container">
           <Die
             imageIndex={imageIndex[0]}
+            updateDiceValues={props.updateDiceValues}
             handleClickDie={holdDie}
             held={heldDice[0]}
             dieIndex={0}
           />
           <Die
             imageIndex={imageIndex[1]}
+            updateDiceValues={props.updateDiceValues}
             handleClickDie={holdDie}
             held={heldDice[1]}
             dieIndex={1}
           />
           <Die
             imageIndex={imageIndex[2]}
+            updateDiceValues={props.updateDiceValues}
             handleClickDie={holdDie}
             held={heldDice[2]}
             dieIndex={2}
           />
           <Die
             imageIndex={imageIndex[3]}
+            updateDiceValues={props.updateDiceValues}
             handleClickDie={holdDie}
             held={heldDice[3]}
             dieIndex={3}
           />
           <Die
             imageIndex={imageIndex[4]}
+            updateDiceValues={props.updateDiceValues}
             handleClickDie={holdDie}
             held={heldDice[4]}
             dieIndex={4}
