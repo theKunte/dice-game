@@ -133,6 +133,7 @@ export const chance = (diceValues) => {
   return score;
 };
 
+//TODO: Fix calculate Bonus Yahtzee
 export const bonusYahtzee = () => {};
 //if yahtzee occured add bonus points
 // if yahtzee has been crossed out no bonus option

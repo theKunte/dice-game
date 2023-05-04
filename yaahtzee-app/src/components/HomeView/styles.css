@@ -85,3 +85,6 @@ th {
   text-align: left;
   padding: 8px;
 }
+.selected {
+  background-color: yellow;
+}
