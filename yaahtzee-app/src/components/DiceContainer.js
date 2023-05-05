@@ -10,7 +10,7 @@ function DiceContainer(props) {
 
   //The user should only be able to toll the dice 3 times total.
   //After the 3rd time the user has to select a field in the score board
-  const [rollsRemaining, setRollsRemaining] = useState(3);
+  const [rollsRemaining, setRollsRemaining] = useState(40);
 
   // function to roll the dice
   const rollDice = () => {

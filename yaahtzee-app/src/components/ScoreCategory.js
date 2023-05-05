@@ -9,6 +9,7 @@ export default function ScoreCategory(props) {
       const score = props.scoreFunction(props.diceValues);
       setCategoryScore(score);
       setUsed(true);
+      props.whenYouSelectTheScore(props.category, score);
     }
   };
 

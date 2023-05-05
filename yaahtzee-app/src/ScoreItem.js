@@ -41,9 +41,15 @@ const calculateUpperTotal = (diceValues) => {
   return total;
 };
 
-export const calculateUpperBonus = (diceValues) => {
-  const upperTotal = calculateUpperTotal(diceValues);
-  return upperTotal >= 63 ? 35 : 0;
+export const calculateUpperBonus = (scores) => {
+  let total = 0;
+  total += scores.ones;
+  total += scores.twos;
+  total += scores.threes;
+  total += scores.fours;
+  total += scores.fives;
+  total += scores.sixes;
+  return total >= 63 ? 35 : 0;
 };
 
 // Lower Score
