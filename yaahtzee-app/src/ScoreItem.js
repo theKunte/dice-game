@@ -40,6 +40,16 @@ const calculateUpperTotal = (diceValues) => {
   }
   return total;
 };
+export const calculateUpperTotalSection = (scores) => {
+  let totalUpper = 0;
+  totalUpper += scores.ones;
+  totalUpper += scores.twos;
+  totalUpper += scores.threes;
+  totalUpper += scores.fours;
+  totalUpper += scores.fives;
+  totalUpper += scores.sixes;
+  return totalUpper;
+};
 
 export const calculateUpperBonus = (scores) => {
   let total = 0;

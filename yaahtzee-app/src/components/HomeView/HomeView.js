@@ -14,7 +14,7 @@ import {
   scoreFours,
   scoreFives,
   scoreSixes,
-  calculateUpperTotal,
+  calculateUpperTotalSection,
   calculateUpperBonus,
   threeOfAKind,
   fourOfAKind,
@@ -57,8 +57,12 @@ function HomeView() {
       tempScore.sixes >= 0 //when all upper sections scores are set calculate upper Bonus
     ) {
       const bonus = calculateUpperBonus(scores);
+      const upperTotal = calculateUpperTotalSection(scores);
+
       tempScore["bonus"] = bonus;
+      tempScore["upperTotal"] = upperTotal;
     }
+
     setScores(tempScore);
   };
   return (
@@ -126,7 +130,7 @@ function HomeView() {
               />
               <tr>
                 <td>Total Score</td>
-                <td></td>
+                <td>{scores.upperTotal}</td>
               </tr>
               <tr>
                 <td>BONUS</td>
