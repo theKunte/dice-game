@@ -23,6 +23,7 @@ import {
   largeStraight,
   yahtzee,
   chance,
+  calculateUpperTotalWithBonus,
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
@@ -56,11 +57,13 @@ function HomeView() {
       tempScore.fives >= 0 &&
       tempScore.sixes >= 0 //when all upper sections scores are set calculate upper Bonus
     ) {
-      const bonus = calculateUpperBonus(scores);
-      const upperTotal = calculateUpperTotalSection(scores);
+      const bonus = calculateUpperBonus(tempScore);
+      const upperTotal = calculateUpperTotalSection(tempScore);
+      const upperTotalWithBonus = calculateUpperTotalWithBonus(tempScore);
 
       tempScore["bonus"] = bonus;
       tempScore["upperTotal"] = upperTotal;
+      tempScore["upperTotalWithBonus"] = upperTotalWithBonus;
     }
 
     setScores(tempScore);
@@ -138,7 +141,7 @@ function HomeView() {
               </tr>
               <tr>
                 <td>Total</td>
-                <td>-</td>
+                <td>{scores.upperTotalWithBonus}</td>
               </tr>
             </table>
           </div>

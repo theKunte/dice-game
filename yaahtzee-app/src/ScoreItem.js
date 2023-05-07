@@ -52,14 +52,13 @@ export const calculateUpperTotalSection = (scores) => {
 };
 
 export const calculateUpperBonus = (scores) => {
-  let total = 0;
-  total += scores.ones;
-  total += scores.twos;
-  total += scores.threes;
-  total += scores.fours;
-  total += scores.fives;
-  total += scores.sixes;
+  let total = calculateUpperTotalSection(scores);
+
   return total >= 63 ? 35 : 0;
+};
+
+export const calculateUpperTotalWithBonus = (scores) => {
+  return calculateUpperBonus(scores) + calculateUpperTotalSection(scores);
 };
 
 // Lower Score

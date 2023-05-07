@@ -8,6 +8,7 @@ import { scoreTwos } from "./ScoreItem.js";
 import { scoreThree } from "./ScoreItem.js";
 import { scoreFives } from "./ScoreItem.js";
 import { scoreSixes } from "./ScoreItem.js";
+import { calculateUpperTotalSection } from "./ScoreItem.js";
 
 // Upper Section Test 1-6
 
@@ -106,6 +107,48 @@ describe("scoreSixes", () => {
     expect(result).toEqual(0);
   });
 });
+
+describe("calculateUpperTotalSection", () => {
+  it("should return the sum of scores from the ones to sixes categories", () => {
+    const scores = {
+      ones: 1,
+      twos: 2,
+      threes: 3,
+      fours: 4,
+      fives: 5,
+      sixes: 6,
+    };
+    const result = calculateUpperTotalSection(scores);
+    expect(result).toEqual(21);
+  });
+
+  it("should return 0 if all scores are 0", () => {
+    const scores = {
+      ones: 0,
+      twos: 0,
+      threes: 0,
+      fours: 0,
+      fives: 0,
+      sixes: 0,
+    };
+    const result = calculateUpperTotalSection(scores);
+    expect(result).toEqual(0);
+  });
+
+  it("should return the correct score", () => {
+    const scores = {
+      ones: 5,
+      twos: 0,
+      threes: 0,
+      fours: 0,
+      fives: 0,
+      sixes: 0,
+    };
+    const result = calculateUpperTotalSection(scores);
+    expect(result).toEqual(5);
+  });
+});
+
 //Lower Section Tests
 
 // Full House
