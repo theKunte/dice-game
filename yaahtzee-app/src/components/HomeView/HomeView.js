@@ -24,6 +24,7 @@ import {
   yahtzee,
   chance,
   calculateUpperTotalWithBonus,
+  bonusYahtzee,
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
@@ -160,42 +161,49 @@ function HomeView() {
                 scoreFunction={threeOfAKind}
                 diceValues={diceValues}
                 alt="3 of A Kind"
+                whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
                 // add image
                 scoreFunction={fourOfAKind}
                 diceValues={diceValues}
                 alt="4 of A Kind"
+                whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
                 // add image
                 scoreFunction={fullHouse}
                 diceValues={diceValues}
                 alt="Full House"
+                whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
                 // add image
                 scoreFunction={smallStraight}
                 diceValues={diceValues}
                 alt="Small Straight"
+                whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
                 // add image
                 scoreFunction={largeStraight}
                 diceValues={diceValues}
                 alt="Large Straight"
+                whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
                 // add image
                 scoreFunction={yahtzee}
                 diceValues={diceValues}
                 alt="YAHTZEE"
+                whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
                 // add image
                 scoreFunction={chance}
                 diceValues={diceValues}
                 alt="Chance"
+                whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <tr>
                 <td>BONUS YAHTZEE</td>
