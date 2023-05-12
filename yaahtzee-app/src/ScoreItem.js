@@ -41,7 +41,6 @@ export const calculateLowerTotal = (scores) => {
   totalLower += scores.largeStraight;
   totalLower += scores.yahtzee;
   totalLower += scores.chance;
-  totalLower += scores.bonusYahtzee;
 
   return totalLower;
 };

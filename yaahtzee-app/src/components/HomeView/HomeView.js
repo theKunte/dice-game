@@ -26,6 +26,7 @@ import {
   calculateUpperTotalWithBonus,
   bonusYahtzee,
   calculateLowerTotal,
+  caluclateFinalGameScore,
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
@@ -80,11 +81,33 @@ function HomeView() {
       tempScore.largeStraight >= 0 &&
       tempScore.fullHouse >= 0 &&
       tempScore.chance >= 0 &&
-      tempScore.yahtzee >= 0 //when all upper sections scores are set calculate upper Bonus
+      tempScore.yahtzee >= 0
     ) {
       const lowerTotal = calculateLowerTotal(tempScore);
 
       tempScore["lowerTotal"] = lowerTotal;
+    }
+    if (
+      tempScore.ones >= 0 &&
+      tempScore.twos >= 0 &&
+      tempScore.threes >= 0 &&
+      tempScore.fours >= 0 &&
+      tempScore.fives >= 0 &&
+      tempScore.sixes >= 0 &&
+      tempScore.threeOfAKind >= 0 &&
+      tempScore.fourOfAKind >= 0 &&
+      tempScore.smallStraight >= 0 &&
+      tempScore.largeStraight >= 0 &&
+      tempScore.fullHouse >= 0 &&
+      tempScore.chance >= 0 &&
+      tempScore.yahtzee >= 0
+    ) {
+      const lowerTotal = calculateLowerTotal(tempScore);
+      const upperTotalWithBonus = calculateUpperTotalWithBonus(tempScore);
+      const finalTotalScore = lowerTotal + upperTotalWithBonus;
+
+      tempScore["lowerTotal"] = lowerTotal;
+      tempScore["finalTotalScore"] = finalTotalScore;
     }
 
     setScores(tempScore);
@@ -241,6 +264,10 @@ function HomeView() {
               <tr>
                 <td>Total Score</td>
                 <td>{scores.lowerTotal}</td>
+              </tr>
+              <tr>
+                <td>FINAL Score</td>
+                <td>{scores.finalTotalScore}</td>
               </tr>
             </table>
           </div>
