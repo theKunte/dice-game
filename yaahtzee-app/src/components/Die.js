@@ -44,7 +44,6 @@ function Die(props) {
           src={image}
           alt="dice"
         ></img>
-        <p>{value}</p>
         <div style={{ width: "5px", display: "inline-block" }}></div>
       </div>
     </div>

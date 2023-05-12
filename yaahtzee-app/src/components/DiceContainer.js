@@ -44,9 +44,9 @@ function DiceContainer(props) {
         <div className="roll-dice-button">
           <button
             type="button"
-            className="btn btn-outline-primary"
             onClick={rollDice}
             disabled={rollsRemaining === 0}
+            className="roll-dice-btn"
           >
             {rollsRemaining === 0 ? "No rolls remaining" : "Roll Dice"}
           </button>

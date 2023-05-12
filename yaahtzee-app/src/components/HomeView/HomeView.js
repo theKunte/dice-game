@@ -26,7 +26,6 @@ import {
   calculateUpperTotalWithBonus,
   bonusYahtzee,
   calculateLowerTotal,
-  caluclateFinalGameScore,
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
@@ -81,7 +80,8 @@ function HomeView() {
       tempScore.largeStraight >= 0 &&
       tempScore.fullHouse >= 0 &&
       tempScore.chance >= 0 &&
-      tempScore.yahtzee >= 0
+      tempScore.yahtzee >= 0 &&
+      tempScore.bonusYahtzee >= 0
     ) {
       const lowerTotal = calculateLowerTotal(tempScore);
 
@@ -114,8 +114,8 @@ function HomeView() {
   };
 
   return (
-    <div className="main-view">
-      <div className="game-score">
+    <div className="main-view" style={{ border: "1px solid black" }}>
+      <div className="game-score" style={{ border: "1px solid red" }}>
         <h1>This is the main Game view</h1>
         <div className="score-container">
           <div className="upper-score-view">
@@ -140,6 +140,7 @@ function HomeView() {
                 category="twos"
                 image={DiceImage2}
                 scoreFunction={scoreTwos}
+                text={"Once"}
                 diceValues={diceValues}
                 alt="Score Category 2"
                 whenYouSelectTheScore={whenYouSelectTheScore}
@@ -259,8 +260,9 @@ function HomeView() {
 
               <tr>
                 <td>BONUS YAHTZEE</td>
-                <td>-</td>
+                {/* TODO: Add Bonus Yahtzee if Yahtzee */}
               </tr>
+              <td>-</td>
               <tr>
                 <td>Total Score</td>
                 <td>{scores.lowerTotal}</td>
