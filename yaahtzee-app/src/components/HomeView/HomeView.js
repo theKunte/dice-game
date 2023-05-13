@@ -1,5 +1,5 @@
 import "./styles.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DiceImage1 from "../../images/Dice1.png";
 import DiceImage2 from "../../images/Dice2.png";
 import DiceImage3 from "../../images/Dice3.png";
@@ -31,6 +31,7 @@ import ScoreCategory from "../ScoreCategory";
 
 function HomeView() {
   // Game state between Dice and Scoreboard
+  const [rollButtonEnabled, setrollButtonEnabled] = useState(true);
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
   const [scores, setScores] = useState({
     ones: -1,
@@ -111,6 +112,7 @@ function HomeView() {
     }
 
     setScores(tempScore);
+    setrollButtonEnabled(true);
   };
 
   return (
@@ -275,7 +277,11 @@ function HomeView() {
           </div>
         </div>
       </div>
-      <DiceContainer updateDiceValues={updateDiceValues} />
+      <DiceContainer
+        rollButtonEnabled={rollButtonEnabled}
+        setrollButtonEnabled={setrollButtonEnabled}
+        updateDiceValues={updateDiceValues}
+      />
     </div>
   );
 }

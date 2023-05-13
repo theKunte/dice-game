@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import { useState, React, useEffect } from "react";
 import Die from "./Die";
 import "../components/HomeView/styles.css";
 import "./HomeView/styles.css";
@@ -10,7 +10,13 @@ function DiceContainer(props) {
 
   //The user should only be able to toll the dice 3 times total.
   //After the 3rd time the user has to select a field in the score board
-  const [rollsRemaining, setRollsRemaining] = useState(40);
+  const [rollsRemaining, setRollsRemaining] = useState(3);
+
+  useEffect(() => {
+    if (rollsRemaining === 0) {
+      props.setrollButtonEnabled(false);
+    }
+  }, [rollsRemaining]);
 
   // function to roll the dice
   const rollDice = () => {
@@ -45,7 +51,7 @@ function DiceContainer(props) {
           <button
             type="button"
             onClick={rollDice}
-            disabled={rollsRemaining === 0}
+            disabled={!props.rollButtonEnabled}
             className="roll-dice-btn"
           >
             {rollsRemaining === 0 ? "No rolls remaining" : "Roll Dice"}
