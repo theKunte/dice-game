@@ -32,18 +32,38 @@ const scoreValuesForUpperSection = (diceValues, numberToScore) => {
   return score;
 };
 
-const calculateUpperTotal = (diceValues) => {
-  let total = 0;
-  for (let i = 1; i <= 6; i++) {
-    const score = scoreValuesForUpperSection(diceValues, i);
-    total += score;
-  }
-  return total;
+export const calculateLowerTotal = (scores) => {
+  let totalLower = 0;
+  totalLower += scores.threeOfAKind;
+  totalLower += scores.fourOfAKind;
+  totalLower += scores.fullHouse;
+  totalLower += scores.smallStraight;
+  totalLower += scores.largeStraight;
+  totalLower += scores.yahtzee;
+  totalLower += scores.chance;
+
+  return totalLower;
 };
 
-export const calculateUpperBonus = (diceValues) => {
-  const upperTotal = calculateUpperTotal(diceValues);
-  return upperTotal >= 63 ? 35 : 0;
+export const calculateUpperTotalSection = (scores) => {
+  let totalUpper = 0;
+  totalUpper += scores.ones;
+  totalUpper += scores.twos;
+  totalUpper += scores.threes;
+  totalUpper += scores.fours;
+  totalUpper += scores.fives;
+  totalUpper += scores.sixes;
+  return totalUpper;
+};
+
+export const calculateUpperBonus = (scores) => {
+  let total = calculateUpperTotalSection(scores);
+
+  return total >= 63 ? 35 : 0;
+};
+
+export const calculateUpperTotalWithBonus = (scores) => {
+  return calculateUpperBonus(scores) + calculateUpperTotalSection(scores);
 };
 
 // Lower Score
@@ -130,6 +150,7 @@ export const chance = (diceValues) => {
   for (let i = 0; i < diceValues.length; i++) {
     score += diceValues[i];
   }
+  console.log(score);
   return score;
 };
 
