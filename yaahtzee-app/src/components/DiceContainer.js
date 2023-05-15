@@ -1,4 +1,4 @@
-import { useState, React } from "react";
+import { useState, React, useEffect } from "react";
 import Die from "./Die";
 import "../components/HomeView/styles.css";
 import "./HomeView/styles.css";
@@ -10,11 +10,16 @@ function DiceContainer(props) {
 
   //The user should only be able to toll the dice 3 times total.
   //After the 3rd time the user has to select a field in the score board
-  const [rollsRemaining, setRollsRemaining] = useState(40);
+
+  useEffect(() => {
+    if (props.rollsRemaining === 0) {
+      props.setRollButtonEnabled(false);
+    }
+  }, [props.rollsRemaining]);
 
   // function to roll the dice
   const rollDice = () => {
-    if (rollsRemaining > 0) {
+    if (props.rollsRemaining > 0) {
       const newImageIndex = [...imageIndex];
       for (let i = 0; i < heldDice.length; i++) {
         if (!heldDice[i]) {
@@ -22,7 +27,7 @@ function DiceContainer(props) {
         }
       }
       setImageIndex(newImageIndex);
-      setRollsRemaining(rollsRemaining - 1);
+      props.setRollsRemaining(props.rollsRemaining - 1);
     }
   };
 
@@ -39,16 +44,16 @@ function DiceContainer(props) {
 
   return (
     <div>
-      {/* TODO:  fix number of rolls. User should see that they have a total of 3 */}
+      {/* TODO:fix number of rolls. User should see that they have a total of 3 */}
       <div className="roll-dice-bottom-view">
         <div className="roll-dice-button">
           <button
             type="button"
             onClick={rollDice}
-            disabled={rollsRemaining === 0}
+            disabled={!props.rollButtonEnabled}
             className="roll-dice-btn"
           >
-            {rollsRemaining === 0 ? "No rolls remaining" : "Roll Dice"}
+            {props.rollsRemaining === 0 ? "No rolls remaining" : "Roll Dice"}
           </button>
         </div>
       </div>
