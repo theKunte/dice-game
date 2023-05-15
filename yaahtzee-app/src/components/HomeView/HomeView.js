@@ -24,8 +24,8 @@ import {
   yahtzee,
   chance,
   calculateUpperTotalWithBonus,
-  bonusYahtzee,
   calculateLowerTotal,
+  calculateBonusYahtzee,
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
@@ -54,6 +54,13 @@ function HomeView() {
   });
   const updateDiceValues = (dieIndex, dieValue) => {
     diceValues[dieIndex] = dieValue;
+  };
+
+  const whenYouSelectBonusYahtzee = () => {
+    if (scores.yahtzee === 50 && scores.bonusYahtzee === -1) {
+      let score = calculateBonusYahtzee(scores, diceValues);
+      setScores({ ...scores, bonusYahtzee: score }); // spread operator but modify one property
+    }
   };
 
   const whenYouSelectTheScore = (category, score) => {
@@ -261,12 +268,13 @@ function HomeView() {
                 alt="Chance"
                 whenYouSelectTheScore={whenYouSelectTheScore}
               />
-
-              <tr>
-                <td>BONUS YAHTZEE</td>
-                {/* TODO: Add Bonus Yahtzee if Yahtzee */}
-              </tr>
-              <td>-</td>
+              <div onClick={whenYouSelectBonusYahtzee}>
+                <tr>
+                  <td>BONUS YAHTZEE</td>
+                  {/* TODO: Add Bonus Yahtzee if Yahtzee */}
+                </tr>
+                <td>{scores.bonusYahtzee}</td>
+              </div>
               <tr>
                 <td>Total Score</td>
                 <td>{scores.lowerTotal}</td>

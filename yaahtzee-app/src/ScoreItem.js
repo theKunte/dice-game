@@ -145,6 +145,15 @@ export const yahtzee = (diceValues) => {
   }
 };
 
+export const calculateBonusYahtzee = (scores, diceValues) => {
+  let total = 0;
+  if (scores.yahtzee === 50) {
+    total = yahtzee(diceValues);
+    console.log(total);
+  }
+  return total;
+};
+
 export const chance = (diceValues) => {
   let score = 0;
   for (let i = 0; i < diceValues.length; i++) {
@@ -153,9 +162,3 @@ export const chance = (diceValues) => {
   console.log(score);
   return score;
 };
-
-//TODO: Fix calculate Bonus Yahtzee
-export const bonusYahtzee = () => {};
-//if yahtzee occured add bonus points
-// if yahtzee has been crossed out no bonus option
-// will have to add useState to keep track if a catergory has been crossed out
