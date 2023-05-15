@@ -31,7 +31,9 @@ import ScoreCategory from "../ScoreCategory";
 
 function HomeView() {
   // Game state between Dice and Scoreboard
-  const [rollButtonEnabled, setrollButtonEnabled] = useState(true);
+  const [rollButtonEnabled, setRollButtonEnabled] = useState(true);
+  const [rollsRemaining, setRollsRemaining] = useState(3);
+
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
   const [scores, setScores] = useState({
     ones: -1,
@@ -112,7 +114,7 @@ function HomeView() {
     }
 
     setScores(tempScore);
-    setrollButtonEnabled(true);
+    setRollButtonEnabled(true);
   };
 
   return (
@@ -279,8 +281,10 @@ function HomeView() {
       </div>
       <DiceContainer
         rollButtonEnabled={rollButtonEnabled}
-        setrollButtonEnabled={setrollButtonEnabled}
+        setRollButtonEnabled={setRollButtonEnabled}
         updateDiceValues={updateDiceValues}
+        rollsRemaining={rollsRemaining}
+        setRollsRemaining={setRollsRemaining}
       />
     </div>
   );
