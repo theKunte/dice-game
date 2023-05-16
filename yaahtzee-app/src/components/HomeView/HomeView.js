@@ -57,9 +57,10 @@ function HomeView() {
   };
 
   const whenYouSelectBonusYahtzee = () => {
-    if (scores.yahtzee === 50 && scores.bonusYahtzee === -1) {
+    if (scores.yahtzee >= 0 && scores.bonusYahtzee === -1) {
+      // Update condition
       let score = calculateBonusYahtzee(scores, diceValues);
-      setScores({ ...scores, bonusYahtzee: score }); // spread operator but modify one property
+      setScores({ ...scores, bonusYahtzee: score });
     }
   };
 
