@@ -63,7 +63,7 @@ function HomeView() {
       setScores({ ...scores, bonusYahtzee: score });
     }
   };
-
+  // TODO: update rollDice button -> user should not be able to select multiple scores whith the same dicevalues
   const whenYouSelectTheScore = (category, score) => {
     const tempScore = { ...scores };
     tempScore[category] = score;
