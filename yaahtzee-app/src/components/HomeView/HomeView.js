@@ -6,6 +6,14 @@ import DiceImage3 from "../../images/Dice3.png";
 import DiceImage4 from "../../images/Dice4.png";
 import DiceImage5 from "../../images/Dice5.png";
 import DiceImage6 from "../../images/Dice6.png";
+import ThreeOfAKind from "../../images/threeOfAKind.jpeg";
+import FourOfAKind from "../../images/fourOfAKind.jpeg";
+import Chance from "../../images/chance.jpeg";
+import SmallStraight from "../../images/small.jpeg";
+import LargeStraight from "../../images/large.jpeg";
+import Yahtzee from "../../images/yahtzee.jpeg";
+import FullHouse from "../../images/fullHouse.png";
+
 import DiceContainer from "../DiceContainer";
 import {
   scoreOnes,
@@ -214,56 +222,56 @@ function HomeView() {
                 </th>
               </tr>
               <ScoreCategory
-                // add image
                 category={"threeOfAKind"}
+                image={ThreeOfAKind}
                 scoreFunction={threeOfAKind}
                 diceValues={diceValues}
                 alt="3 of A Kind"
                 whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
-                // add image
                 category={"fourOfAKind"}
+                image={FourOfAKind}
                 scoreFunction={fourOfAKind}
                 diceValues={diceValues}
                 alt="4 of A Kind"
                 whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
-                // add image
                 category={"fullHouse"}
+                image={FullHouse}
                 scoreFunction={fullHouse}
                 diceValues={diceValues}
                 alt="Full House"
                 whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
-                // add image
                 category={"smallStraight"}
+                image={SmallStraight}
                 scoreFunction={smallStraight}
                 diceValues={diceValues}
                 alt="Small Straight"
                 whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
-                // add image
                 category={"largeStraight"}
+                image={LargeStraight}
                 scoreFunction={largeStraight}
                 diceValues={diceValues}
                 alt="Large Straight"
                 whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
-                // add image
                 category={"yahtzee"}
+                image={Yahtzee}
                 scoreFunction={yahtzee}
                 diceValues={diceValues}
                 alt="YAHTZEE"
                 whenYouSelectTheScore={whenYouSelectTheScore}
               />
               <ScoreCategory
-                // add image
                 category={"chance"}
+                image={Chance}
                 scoreFunction={chance}
                 diceValues={diceValues}
                 alt="Chance"
