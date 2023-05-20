@@ -294,6 +294,7 @@ function HomeView() {
               </tr>
             </table>
           </div>
+          <div className="score-container"></div>
         </div>
       </div>
       <DiceContainer
