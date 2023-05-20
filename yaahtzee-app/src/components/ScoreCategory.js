@@ -5,6 +5,8 @@ export default function ScoreCategory(props) {
   const [used, setUsed] = useState(false);
 
   const handleClick = () => {
+    if (props.enableScoring === false) return;
+
     if (!used) {
       const score = props.scoreFunction(props.diceValues);
       setCategoryScore(score);

@@ -133,6 +133,7 @@ function HomeView() {
     setScores(tempScore);
     setRollButtonEnabled(true);
     setRollsRemaining(3);
+    setEnableScoring(false);
   };
 
   return (
@@ -157,6 +158,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 1"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="twos"
@@ -166,6 +168,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 2"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="threes"
@@ -174,6 +177,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 3"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="fours"
@@ -182,6 +186,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 4"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="fives"
@@ -190,6 +195,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 5"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="sixes"
@@ -198,6 +204,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 6"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <tr>
                 <td>Total Score</td>
@@ -230,6 +237,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="3 of A Kind"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category={"fourOfAKind"}
@@ -238,6 +246,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="4 of A Kind"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category={"fullHouse"}
@@ -246,6 +255,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Full House"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category={"smallStraight"}
@@ -254,6 +264,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Small Straight"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category={"largeStraight"}
@@ -262,6 +273,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Large Straight"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category={"yahtzee"}
@@ -270,6 +282,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="YAHTZEE"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category={"chance"}
@@ -278,6 +291,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Chance"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <div onClick={whenYouSelectBonusYahtzee}>
                 <tr>
