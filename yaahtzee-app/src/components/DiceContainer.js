@@ -15,6 +15,9 @@ function DiceContainer(props) {
     if (props.rollsRemaining === 0) {
       props.setRollButtonEnabled(false);
     }
+    if (props.rollsRemaining === 3) {
+      props.setRollButtonEnabled(true);
+    }
   }, [props.rollsRemaining]);
 
   // function to roll the dice

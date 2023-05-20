@@ -41,6 +41,7 @@ function HomeView() {
   // Game state between Dice and Scoreboard
   const [rollButtonEnabled, setRollButtonEnabled] = useState(true);
   const [rollsRemaining, setRollsRemaining] = useState(3);
+  const [enableScoring, setEnableScoring] = useState(false);
 
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
   const [scores, setScores] = useState({
@@ -131,6 +132,7 @@ function HomeView() {
 
     setScores(tempScore);
     setRollButtonEnabled(true);
+    setRollsRemaining(3);
   };
 
   return (
@@ -303,6 +305,7 @@ function HomeView() {
         updateDiceValues={updateDiceValues}
         rollsRemaining={rollsRemaining}
         setRollsRemaining={setRollsRemaining}
+        setEnableScoring={setEnableScoring}
       />
     </div>
   );
