@@ -6,6 +6,14 @@ import DiceImage3 from "../../images/Dice3.png";
 import DiceImage4 from "../../images/Dice4.png";
 import DiceImage5 from "../../images/Dice5.png";
 import DiceImage6 from "../../images/Dice6.png";
+import ThreeOfAKind from "../../images/threeOfAKind.jpeg";
+import FourOfAKind from "../../images/fourOfAKind.jpeg";
+import Chance from "../../images/chance.jpeg";
+import SmallStraight from "../../images/small.jpeg";
+import LargeStraight from "../../images/large.jpeg";
+import Yahtzee from "../../images/yahtzee.jpeg";
+import FullHouse from "../../images/fullHouse.png";
+
 import DiceContainer from "../DiceContainer";
 import {
   scoreOnes,
@@ -24,8 +32,8 @@ import {
   yahtzee,
   chance,
   calculateUpperTotalWithBonus,
-  bonusYahtzee,
   calculateLowerTotal,
+  calculateBonusYahtzee,
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
@@ -33,6 +41,7 @@ function HomeView() {
   // Game state between Dice and Scoreboard
   const [rollButtonEnabled, setRollButtonEnabled] = useState(true);
   const [rollsRemaining, setRollsRemaining] = useState(3);
+  const [enableScoring, setEnableScoring] = useState(false);
 
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
   const [scores, setScores] = useState({
@@ -56,6 +65,14 @@ function HomeView() {
     diceValues[dieIndex] = dieValue;
   };
 
+  const whenYouSelectBonusYahtzee = () => {
+    if (scores.yahtzee >= 0 && scores.bonusYahtzee === -1) {
+      // Update condition
+      let score = calculateBonusYahtzee(scores, diceValues);
+      setScores({ ...scores, bonusYahtzee: score });
+    }
+  };
+  // TODO: update rollDice button -> user should not be able to select multiple scores whith the same dicevalues
   const whenYouSelectTheScore = (category, score) => {
     const tempScore = { ...scores };
     tempScore[category] = score;
@@ -115,6 +132,8 @@ function HomeView() {
 
     setScores(tempScore);
     setRollButtonEnabled(true);
+    setRollsRemaining(3);
+    setEnableScoring(false);
   };
 
   return (
@@ -139,6 +158,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 1"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="twos"
@@ -148,6 +168,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 2"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="threes"
@@ -156,6 +177,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 3"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="fours"
@@ -164,6 +186,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 4"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="fives"
@@ -172,6 +195,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 5"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
                 category="sixes"
@@ -180,6 +204,7 @@ function HomeView() {
                 diceValues={diceValues}
                 alt="Score Category 6"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <tr>
                 <td>Total Score</td>
@@ -206,67 +231,75 @@ function HomeView() {
                 </th>
               </tr>
               <ScoreCategory
-                // add image
                 category={"threeOfAKind"}
+                image={ThreeOfAKind}
                 scoreFunction={threeOfAKind}
                 diceValues={diceValues}
                 alt="3 of A Kind"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
-                // add image
                 category={"fourOfAKind"}
+                image={FourOfAKind}
                 scoreFunction={fourOfAKind}
                 diceValues={diceValues}
                 alt="4 of A Kind"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
-                // add image
                 category={"fullHouse"}
+                image={FullHouse}
                 scoreFunction={fullHouse}
                 diceValues={diceValues}
                 alt="Full House"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
-                // add image
                 category={"smallStraight"}
+                image={SmallStraight}
                 scoreFunction={smallStraight}
                 diceValues={diceValues}
                 alt="Small Straight"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
-                // add image
                 category={"largeStraight"}
+                image={LargeStraight}
                 scoreFunction={largeStraight}
                 diceValues={diceValues}
                 alt="Large Straight"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
-                // add image
                 category={"yahtzee"}
+                image={Yahtzee}
                 scoreFunction={yahtzee}
                 diceValues={diceValues}
                 alt="YAHTZEE"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
               <ScoreCategory
-                // add image
                 category={"chance"}
+                image={Chance}
                 scoreFunction={chance}
                 diceValues={diceValues}
                 alt="Chance"
                 whenYouSelectTheScore={whenYouSelectTheScore}
+                enableScoring={enableScoring}
               />
-
-              <tr>
-                <td>BONUS YAHTZEE</td>
-                {/* TODO: Add Bonus Yahtzee if Yahtzee */}
-              </tr>
-              <td>-</td>
+              <div onClick={whenYouSelectBonusYahtzee}>
+                <tr>
+                  <td>BONUS YAHTZEE</td>
+                  {/* TODO: Add Bonus Yahtzee if Yahtzee */}
+                </tr>
+                <td>{scores.bonusYahtzee}</td>
+              </div>
               <tr>
                 <td>Total Score</td>
                 <td>{scores.lowerTotal}</td>
@@ -277,6 +310,7 @@ function HomeView() {
               </tr>
             </table>
           </div>
+          <div className="score-container"></div>
         </div>
       </div>
       <DiceContainer
@@ -285,6 +319,7 @@ function HomeView() {
         updateDiceValues={updateDiceValues}
         rollsRemaining={rollsRemaining}
         setRollsRemaining={setRollsRemaining}
+        setEnableScoring={setEnableScoring}
       />
     </div>
   );

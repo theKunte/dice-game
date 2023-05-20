@@ -32,18 +32,47 @@ const scoreValuesForUpperSection = (diceValues, numberToScore) => {
   return score;
 };
 
-export const calculateLowerTotal = (scores) => {
-  let totalLower = 0;
-  totalLower += scores.threeOfAKind;
-  totalLower += scores.fourOfAKind;
-  totalLower += scores.fullHouse;
-  totalLower += scores.smallStraight;
-  totalLower += scores.largeStraight;
-  totalLower += scores.yahtzee;
-  totalLower += scores.chance;
+export function calculateLowerTotal(scores) {
+  const {
+    threeOfAKind,
+    fourOfAKind,
+    fullHouse,
+    smallStraight,
+    largeStraight,
+    yahtzee,
+    chance,
+    bonusYahtzee, // Add bonusYahtzee score
+  } = scores;
 
-  return totalLower;
-};
+  let lowerTotal = 0;
+
+  if (threeOfAKind >= 0) {
+    lowerTotal += threeOfAKind;
+  }
+  if (fourOfAKind >= 0) {
+    lowerTotal += fourOfAKind;
+  }
+  if (fullHouse >= 0) {
+    lowerTotal += fullHouse;
+  }
+  if (smallStraight >= 0) {
+    lowerTotal += smallStraight;
+  }
+  if (largeStraight >= 0) {
+    lowerTotal += largeStraight;
+  }
+  if (yahtzee >= 0) {
+    lowerTotal += yahtzee;
+  }
+  if (chance >= 0) {
+    lowerTotal += chance;
+  }
+  if (bonusYahtzee >= 0) {
+    lowerTotal += bonusYahtzee; // Add bonusYahtzee score
+  }
+
+  return lowerTotal;
+}
 
 export const calculateUpperTotalSection = (scores) => {
   let totalUpper = 0;
@@ -145,6 +174,15 @@ export const yahtzee = (diceValues) => {
   }
 };
 
+export const calculateBonusYahtzee = (scores, diceValues) => {
+  let total = 0;
+  if (scores.yahtzee === 50) {
+    total = yahtzee(diceValues);
+    console.log(total);
+  }
+  return total;
+};
+
 export const chance = (diceValues) => {
   let score = 0;
   for (let i = 0; i < diceValues.length; i++) {
@@ -153,9 +191,3 @@ export const chance = (diceValues) => {
   console.log(score);
   return score;
 };
-
-//TODO: Fix calculate Bonus Yahtzee
-export const bonusYahtzee = () => {};
-//if yahtzee occured add bonus points
-// if yahtzee has been crossed out no bonus option
-// will have to add useState to keep track if a catergory has been crossed out

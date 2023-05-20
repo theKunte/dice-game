@@ -13,6 +13,7 @@
   border: 1px solid black;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background-color: #045c5c;
 }
 
 .score-container {
@@ -25,9 +26,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: rem;
 }
 
 .upper-score-view {
+  padding: 1rem;
   background-color: var(--main-color);
   flex: 1;
   display: flex;
@@ -113,6 +116,7 @@
 
 table {
   font-family: arial, sans-serif;
+  border: 1px solid black;
 }
 
 td,
