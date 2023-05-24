@@ -41,6 +41,8 @@ function HomeView() {
   // Game state between Dice and Scoreboard
   const [rollButtonEnabled, setRollButtonEnabled] = useState(true);
   const [rollsRemaining, setRollsRemaining] = useState(3);
+  const [turnsRemaining, setTurnsRemaining] = useState(3);
+
   const [enableScoring, setEnableScoring] = useState(false);
 
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
@@ -133,6 +135,7 @@ function HomeView() {
     setScores(tempScore);
     setRollButtonEnabled(true);
     setRollsRemaining(3);
+    setTurnsRemaining(3);
     setEnableScoring(false);
   };
 
@@ -316,6 +319,8 @@ function HomeView() {
       <DiceContainer
         rollButtonEnabled={rollButtonEnabled}
         setRollButtonEnabled={setRollButtonEnabled}
+        turnsRemaining={turnsRemaining}
+        setTurnsRemaining={setTurnsRemaining}
         updateDiceValues={updateDiceValues}
         rollsRemaining={rollsRemaining}
         setRollsRemaining={setRollsRemaining}

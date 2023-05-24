@@ -7,7 +7,6 @@ function DiceContainer(props) {
   const [imageIndex, setImageIndex] = useState([0, 0, 0, 0, 0]);
   // heldDice is current State and setHeldDice is the function that allows to update the state
   const [heldDice, setHeldDice] = useState([false, false, false, false, false]);
-
   //The user should only be able to toll the dice 3 times total.
   //After the 3rd time the user has to select a field in the score board
 
@@ -17,9 +16,15 @@ function DiceContainer(props) {
     }
   }, [props.rollsRemaining]);
 
+  useEffect(() => {
+    if (props.turnsRemaining === 0) {
+      props.setTurnsRemaining(false);
+    }
+  }, [props.turnsRemaining]);
+
   // function to roll the dice
   const rollDice = () => {
-    if (props.rollsRemaining > 0) {
+    if (props.rollsRemaining > 0 && props.turnsRemaining > 0) {
       const newImageIndex = [...imageIndex];
       for (let i = 0; i < heldDice.length; i++) {
         if (!heldDice[i]) {
@@ -28,6 +33,7 @@ function DiceContainer(props) {
       }
       setImageIndex(newImageIndex);
       props.setRollsRemaining(props.rollsRemaining - 1);
+      props.setTurnsRemaining(props.turnsRemaining - 1);
       props.setEnableScoring(true);
     }
   };
@@ -54,7 +60,11 @@ function DiceContainer(props) {
             disabled={!props.rollButtonEnabled}
             className="roll-dice-btn"
           >
-            {props.rollsRemaining === 0 ? "No rolls remaining" : "Roll Dice"}
+            {props.rollsRemaining === 0
+              ? "No rolls remaining"
+              : `Roll Dice (${props.turnsRemaining} turn${
+                  props.turnsRemaining === 1 ? "" : "s"
+                } left)`}
           </button>
         </div>
       </div>
