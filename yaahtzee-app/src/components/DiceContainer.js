@@ -6,7 +6,6 @@ import "./HomeView/styles.css";
 function DiceContainer(props) {
   const [imageIndex, setImageIndex] = useState([0, 0, 0, 0, 0]);
   // heldDice is current State and setHeldDice is the function that allows to update the state
-  const [heldDice, setHeldDice] = useState([false, false, false, false, false]);
   //The user should only be able to toll the dice 3 times total.
   //After the 3rd time the user has to select a field in the score board
 
@@ -26,8 +25,8 @@ function DiceContainer(props) {
   const rollDice = () => {
     if (props.rollsRemaining > 0 && props.turnsRemaining > 0) {
       const newImageIndex = [...imageIndex];
-      for (let i = 0; i < heldDice.length; i++) {
-        if (!heldDice[i]) {
+      for (let i = 0; i < props.heldDice.length; i++) {
+        if (!props.heldDice[i]) {
           newImageIndex[i] = getRandomNumber();
         }
       }
@@ -40,9 +39,9 @@ function DiceContainer(props) {
 
   const holdDie = (index) => {
     console.log(index);
-    const newArray = [...heldDice];
-    newArray[index] = !heldDice[index];
-    setHeldDice(newArray);
+    const newArray = [...props.heldDice];
+    newArray[index] = !props.heldDice[index];
+    props.setHeldDice(newArray);
   };
 
   const getRandomNumber = () => {
@@ -75,35 +74,35 @@ function DiceContainer(props) {
               imageIndex={imageIndex[0]}
               updateDiceValues={props.updateDiceValues}
               handleClickDie={holdDie}
-              held={heldDice[0]}
+              held={props.heldDice[0]}
               dieIndex={0}
             />
             <Die
               imageIndex={imageIndex[1]}
               updateDiceValues={props.updateDiceValues}
               handleClickDie={holdDie}
-              held={heldDice[1]}
+              held={props.heldDice[1]}
               dieIndex={1}
             />
             <Die
               imageIndex={imageIndex[2]}
               updateDiceValues={props.updateDiceValues}
               handleClickDie={holdDie}
-              held={heldDice[2]}
+              held={props.heldDice[2]}
               dieIndex={2}
             />
             <Die
               imageIndex={imageIndex[3]}
               updateDiceValues={props.updateDiceValues}
               handleClickDie={holdDie}
-              held={heldDice[3]}
+              held={props.heldDice[3]}
               dieIndex={3}
             />
             <Die
               imageIndex={imageIndex[4]}
               updateDiceValues={props.updateDiceValues}
               handleClickDie={holdDie}
-              held={heldDice[4]}
+              held={props.heldDice[4]}
               dieIndex={4}
             />
           </div>

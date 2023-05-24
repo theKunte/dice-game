@@ -42,6 +42,7 @@ function HomeView() {
   const [rollButtonEnabled, setRollButtonEnabled] = useState(true);
   const [rollsRemaining, setRollsRemaining] = useState(3);
   const [turnsRemaining, setTurnsRemaining] = useState(3);
+  const [heldDice, setHeldDice] = useState([false, false, false, false, false]);
 
   const [enableScoring, setEnableScoring] = useState(false);
 
@@ -137,6 +138,7 @@ function HomeView() {
     setRollsRemaining(3);
     setTurnsRemaining(3);
     setEnableScoring(false);
+    setHeldDice([false, false, false, false, false]);
   };
 
   return (
@@ -325,6 +327,8 @@ function HomeView() {
         rollsRemaining={rollsRemaining}
         setRollsRemaining={setRollsRemaining}
         setEnableScoring={setEnableScoring}
+        heldDice={heldDice}
+        setHeldDice={setHeldDice}
       />
     </div>
   );
