@@ -8,11 +8,14 @@ export default function ScoreCategory(props) {
     if (props.enableScoring === false) return;
 
     if (!used) {
-      const score = props.scoreFunction(props.diceValues);
-      setCategoryScore(score);
-      setUsed(true);
-      props.whenYouSelectTheScore(props.category, score);
+      setScore();
     }
+  };
+  const setScore = () => {
+    const score = props.scoreFunction(props.diceValues);
+    setCategoryScore(score);
+    setUsed(true);
+    props.whenYouSelectTheScore(props.category, score);
   };
 
   const rowClass = used ? "selected" : "";
