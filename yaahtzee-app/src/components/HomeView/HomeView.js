@@ -13,7 +13,7 @@ import SmallStraight from "../../images/small.jpeg";
 import LargeStraight from "../../images/large.jpeg";
 import Yahtzee from "../../images/yahtzee.jpeg";
 import FullHouse from "../../images/fullHouse.png";
-
+import GameOverPopup from "../GameOverPopup";
 import DiceContainer from "../DiceContainer";
 import {
   scoreOnes,
@@ -43,7 +43,7 @@ function HomeView() {
   const [rollsRemaining, setRollsRemaining] = useState(3);
   const [turnsRemaining, setTurnsRemaining] = useState(3);
   const [heldDice, setHeldDice] = useState([false, false, false, false, false]);
-
+  const [gameOver, setGameOver] = useState(false);
   const [enableScoring, setEnableScoring] = useState(false);
 
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
@@ -64,6 +64,7 @@ function HomeView() {
     chance: -1,
     bonusYahtzee: -1,
   });
+
   const updateDiceValues = (dieIndex, dieValue) => {
     diceValues[dieIndex] = dieValue;
   };
@@ -131,6 +132,7 @@ function HomeView() {
 
       tempScore["lowerTotal"] = lowerTotal;
       tempScore["finalTotalScore"] = finalTotalScore;
+      setGameOver(true);
     }
 
     setScores(tempScore);
@@ -301,7 +303,6 @@ function HomeView() {
               <div onClick={whenYouSelectBonusYahtzee}>
                 <tr>
                   <td>BONUS YAHTZEE</td>
-                  {/* TODO: Add Bonus Yahtzee if Yahtzee */}
                 </tr>
                 <td>{scores.bonusYahtzee}</td>
               </div>
@@ -311,7 +312,10 @@ function HomeView() {
               </tr>
               <tr>
                 <td>FINAL Score</td>
-                <td>{scores.finalTotalScore}</td>
+                <td>
+                  {scores.finalTotalScore}
+                  {gameOver && <GameOverPopup score={scores.finalTotalScore} />}
+                </td>
               </tr>
             </table>
           </div>
