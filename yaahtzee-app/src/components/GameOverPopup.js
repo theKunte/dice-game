@@ -6,7 +6,6 @@ const GameOverPopup = ({ score, onPlayAgain }) => {
       <h2>Game Over</h2>
       <p>Your Score: {score}</p>
       {/* TODO: Fix reset logic  */}
-      <button onClick={onPlayAgain}>Play Again</button>
     </div>
   );
 };

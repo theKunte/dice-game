@@ -62,8 +62,19 @@ function HomeView() {
     largeStraight: -1,
     yahtzee: -1,
     chance: -1,
-    bonusYahtzee: -1,
+    bonusYahtzee: 0,
   });
+
+  // TODO: reste game once game is finished
+  const restartGame = () => {
+    setScores({}); // Reset scores object to an empty object
+    setGameOver(false); // Reset game over state to false
+    setRollButtonEnabled(true);
+    setRollsRemaining(3);
+    setTurnsRemaining(3);
+    setEnableScoring(false);
+    setHeldDice([false, false, false, false, false]);
+  };
 
   const updateDiceValues = (dieIndex, dieValue) => {
     diceValues[dieIndex] = dieValue;
@@ -334,6 +345,7 @@ function HomeView() {
         heldDice={heldDice}
         setHeldDice={setHeldDice}
       />
+      <button onClick={restartGame}>Restart Game</button>
     </div>
   );
 }
