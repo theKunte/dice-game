@@ -1,11 +1,11 @@
 import React from "react";
 
-const GameOverPopup = ({ score, onPlayAgain }) => {
+const GameOverPopup = ({ reset, score }) => {
   return (
     <div className="game-over-popup">
       <h2>Game Over</h2>
       <p>Your Score: {score}</p>
-      {/* TODO: Fix reset logic  */}
+      <button onClick={reset}>Restart Game</button>
     </div>
   );
 };

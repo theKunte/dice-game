@@ -178,7 +178,6 @@ export const calculateBonusYahtzee = (scores, diceValues) => {
   let total = 0;
   if (scores.yahtzee === 50) {
     total = yahtzee(diceValues);
-    console.log(total);
   }
   return total;
 };
@@ -188,6 +187,5 @@ export const chance = (diceValues) => {
   for (let i = 0; i < diceValues.length; i++) {
     score += diceValues[i];
   }
-  console.log(score);
   return score;
 };
