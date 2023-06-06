@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ScoreCategory(props) {
   const [categoryScore, setCategoryScore] = useState(null);
   const [used, setUsed] = useState(false);
+
+  useEffect(() => {
+    if (props.restartGame === true) {
+      setCategoryScore(null);
+      setUsed(false);
+    }
+  }, [props.restartGame]);
 
   const handleClick = () => {
     if (props.enableScoring === false) return;

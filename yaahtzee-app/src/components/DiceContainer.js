@@ -38,7 +38,6 @@ function DiceContainer(props) {
   };
 
   const holdDie = (index) => {
-    console.log(index);
     const newArray = [...props.heldDice];
     newArray[index] = !props.heldDice[index];
     props.setHeldDice(newArray);

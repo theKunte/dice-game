@@ -13,7 +13,7 @@ import SmallStraight from "../../images/small.jpeg";
 import LargeStraight from "../../images/large.jpeg";
 import Yahtzee from "../../images/yahtzee.jpeg";
 import FullHouse from "../../images/fullHouse.png";
-
+import GameOverPopup from "../GameOverPopup";
 import DiceContainer from "../DiceContainer";
 import {
   scoreOnes,
@@ -43,8 +43,9 @@ function HomeView() {
   const [rollsRemaining, setRollsRemaining] = useState(3);
   const [turnsRemaining, setTurnsRemaining] = useState(3);
   const [heldDice, setHeldDice] = useState([false, false, false, false, false]);
-
+  const [gameOver, setGameOver] = useState(false);
   const [enableScoring, setEnableScoring] = useState(false);
+  const [restartGame, setRestartGame] = useState(false);
 
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
   const [scores, setScores] = useState({
@@ -62,8 +63,21 @@ function HomeView() {
     largeStraight: -1,
     yahtzee: -1,
     chance: -1,
-    bonusYahtzee: -1,
+    bonusYahtzee: 0,
   });
+
+  const reset = () => {
+    setRestartGame(false);
+    setScores({}); // Reset scores object to an empty object
+    setGameOver(false); // Reset game over state to false
+    setRollButtonEnabled(true);
+    setRollsRemaining(3);
+    setTurnsRemaining(3);
+    setEnableScoring(false);
+    setHeldDice([false, false, false, false, false]);
+    setRestartGame(true);
+  };
+
   const updateDiceValues = (dieIndex, dieValue) => {
     diceValues[dieIndex] = dieValue;
   };
@@ -75,7 +89,6 @@ function HomeView() {
       setScores({ ...scores, bonusYahtzee: score });
     }
   };
-  // TODO: update rollDice button -> user should not be able to select multiple scores whith the same dicevalues
   const whenYouSelectTheScore = (category, score) => {
     const tempScore = { ...scores };
     tempScore[category] = score;
@@ -131,6 +144,7 @@ function HomeView() {
 
       tempScore["lowerTotal"] = lowerTotal;
       tempScore["finalTotalScore"] = finalTotalScore;
+      setGameOver(true);
     }
 
     setScores(tempScore);
@@ -139,6 +153,7 @@ function HomeView() {
     setTurnsRemaining(3);
     setEnableScoring(false);
     setHeldDice([false, false, false, false, false]);
+    setRestartGame(false);
   };
 
   return (
@@ -164,6 +179,7 @@ function HomeView() {
                 alt="Score Category 1"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category="twos"
@@ -174,6 +190,7 @@ function HomeView() {
                 alt="Score Category 2"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category="threes"
@@ -183,6 +200,7 @@ function HomeView() {
                 alt="Score Category 3"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category="fours"
@@ -192,6 +210,7 @@ function HomeView() {
                 alt="Score Category 4"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category="fives"
@@ -201,6 +220,7 @@ function HomeView() {
                 alt="Score Category 5"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category="sixes"
@@ -210,6 +230,7 @@ function HomeView() {
                 alt="Score Category 6"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <tr>
                 <td>Total Score</td>
@@ -243,6 +264,7 @@ function HomeView() {
                 alt="3 of A Kind"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category={"fourOfAKind"}
@@ -252,6 +274,7 @@ function HomeView() {
                 alt="4 of A Kind"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category={"fullHouse"}
@@ -261,6 +284,7 @@ function HomeView() {
                 alt="Full House"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category={"smallStraight"}
@@ -270,6 +294,7 @@ function HomeView() {
                 alt="Small Straight"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category={"largeStraight"}
@@ -279,6 +304,7 @@ function HomeView() {
                 alt="Large Straight"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category={"yahtzee"}
@@ -288,6 +314,7 @@ function HomeView() {
                 alt="YAHTZEE"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <ScoreCategory
                 category={"chance"}
@@ -297,11 +324,11 @@ function HomeView() {
                 alt="Chance"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
+                restartGame={restartGame}
               />
               <div onClick={whenYouSelectBonusYahtzee}>
                 <tr>
                   <td>BONUS YAHTZEE</td>
-                  {/* TODO: Add Bonus Yahtzee if Yahtzee */}
                 </tr>
                 <td>{scores.bonusYahtzee}</td>
               </div>
@@ -311,7 +338,15 @@ function HomeView() {
               </tr>
               <tr>
                 <td>FINAL Score</td>
-                <td>{scores.finalTotalScore}</td>
+                <td>
+                  {scores.finalTotalScore}
+                  {gameOver && (
+                    <GameOverPopup
+                      reset={reset}
+                      score={scores.finalTotalScore}
+                    />
+                  )}
+                </td>
               </tr>
             </table>
           </div>
