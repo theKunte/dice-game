@@ -49,7 +49,6 @@ function DiceContainer(props) {
 
   return (
     <div>
-      {/* TODO:fix number of rolls. User should see that they have a total of 3 */}
       <div className="roll-dice-bottom-view">
         <div className="roll-dice-button">
           <button
