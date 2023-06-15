@@ -41,8 +41,8 @@
 }
 
 .upper-square {
-  height: 10%;
-  width: 10%;
+  height: 15%;
+  width: 15%;
 }
 
 .btn {
@@ -98,12 +98,11 @@
 .square,
 .held-die,
 .normal {
-  height: 25%;
-  width: 20%;
+  width: 35%;
   display: inline-block;
   box-sizing: border-box;
   vertical-align: middle;
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
 }
 
 .held-die {
