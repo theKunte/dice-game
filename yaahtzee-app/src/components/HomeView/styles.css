@@ -4,6 +4,10 @@
   --highlight-color: yellow;
 }
 
+h1 {
+  text-align: center;
+}
+
 .main-view {
   padding: 0 90px;
   position: initial;

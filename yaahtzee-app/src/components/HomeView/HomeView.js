@@ -158,201 +158,199 @@ function HomeView() {
 
   return (
     <div className="main-view" style={{ border: "1px solid black" }}>
-      <div className="game-score" style={{ border: "1px solid red" }}>
-        <h1>This is the main Game view</h1>
-        <div className="score-container">
-          <div className="upper-score-view">
-            <table>
-              <tr>
-                <th>
-                  <mark>Upper Section</mark>
-                </th>
-                <th>
-                  <mark>Score</mark>
-                </th>
-              </tr>
-              <ScoreCategory
-                category="ones"
-                image={DiceImage1}
-                scoreFunction={scoreOnes}
-                diceValues={diceValues}
-                alt="Score Category 1"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category="twos"
-                image={DiceImage2}
-                scoreFunction={scoreTwos}
-                text={"Once"}
-                diceValues={diceValues}
-                alt="Score Category 2"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category="threes"
-                image={DiceImage3}
-                scoreFunction={scoreThree}
-                diceValues={diceValues}
-                alt="Score Category 3"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category="fours"
-                image={DiceImage4}
-                scoreFunction={scoreFours}
-                diceValues={diceValues}
-                alt="Score Category 4"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category="fives"
-                image={DiceImage5}
-                scoreFunction={scoreFives}
-                diceValues={diceValues}
-                alt="Score Category 5"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category="sixes"
-                image={DiceImage6}
-                scoreFunction={scoreSixes}
-                diceValues={diceValues}
-                alt="Score Category 6"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <tr>
-                <td>Total Score</td>
-                <td>{scores.upperTotal}</td>
-              </tr>
-              <tr>
-                <td>BONUS</td>
-                <td>{scores.bonus}</td>
-              </tr>
-              <tr>
-                <td>Total</td>
-                <td>{scores.upperTotalWithBonus}</td>
-              </tr>
-            </table>
-          </div>
-          <div className="lower-score-view">
-            <table id="upperScore">
-              <tr>
-                <th>
-                  <mark>Lower Section</mark>
-                </th>
-                <th>
-                  <mark>Score</mark>
-                </th>
-              </tr>
-              <ScoreCategory
-                category={"threeOfAKind"}
-                image={ThreeOfAKind}
-                scoreFunction={threeOfAKind}
-                diceValues={diceValues}
-                alt="3 of A Kind"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category={"fourOfAKind"}
-                image={FourOfAKind}
-                scoreFunction={fourOfAKind}
-                diceValues={diceValues}
-                alt="4 of A Kind"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category={"fullHouse"}
-                image={FullHouse}
-                scoreFunction={fullHouse}
-                diceValues={diceValues}
-                alt="Full House"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category={"smallStraight"}
-                image={SmallStraight}
-                scoreFunction={smallStraight}
-                diceValues={diceValues}
-                alt="Small Straight"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category={"largeStraight"}
-                image={LargeStraight}
-                scoreFunction={largeStraight}
-                diceValues={diceValues}
-                alt="Large Straight"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category={"yahtzee"}
-                image={Yahtzee}
-                scoreFunction={yahtzee}
-                diceValues={diceValues}
-                alt="YAHTZEE"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <ScoreCategory
-                category={"chance"}
-                image={Chance}
-                scoreFunction={chance}
-                diceValues={diceValues}
-                alt="Chance"
-                whenYouSelectTheScore={whenYouSelectTheScore}
-                enableScoring={enableScoring}
-                restartGame={restartGame}
-              />
-              <div onClick={whenYouSelectBonusYahtzee}>
-                <tr>
-                  <td>BONUS YAHTZEE</td>
-                </tr>
-                <td>{scores.bonusYahtzee}</td>
-              </div>
-              <tr>
-                <td>Total Score</td>
-                <td>{scores.lowerTotal}</td>
-              </tr>
-              <tr>
-                <td>FINAL Score</td>
-                <td>
-                  {scores.finalTotalScore}
-                  {gameOver && (
-                    <GameOverPopup
-                      reset={reset}
-                      score={scores.finalTotalScore}
-                    />
-                  )}
-                </td>
-              </tr>
-            </table>
-          </div>
-          <div className="score-container"></div>
+      <h1> Play Yathzee!</h1>
+      <div className="score-container">
+        <div className="upper-score-view">
+          <table>
+            <tr>
+              <th>
+                <mark>Upper Section</mark>
+              </th>
+              <th>
+                <mark>Score</mark>
+              </th>
+            </tr>
+            <ScoreCategory
+              category="ones"
+              image={DiceImage1}
+              scoreFunction={scoreOnes}
+              diceValues={diceValues}
+              alt="Score Category 1"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category="twos"
+              image={DiceImage2}
+              scoreFunction={scoreTwos}
+              text={"Once"}
+              diceValues={diceValues}
+              alt="Score Category 2"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category="threes"
+              image={DiceImage3}
+              scoreFunction={scoreThree}
+              diceValues={diceValues}
+              alt="Score Category 3"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category="fours"
+              image={DiceImage4}
+              scoreFunction={scoreFours}
+              diceValues={diceValues}
+              alt="Score Category 4"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category="fives"
+              image={DiceImage5}
+              scoreFunction={scoreFives}
+              diceValues={diceValues}
+              alt="Score Category 5"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category="sixes"
+              image={DiceImage6}
+              scoreFunction={scoreSixes}
+              diceValues={diceValues}
+              alt="Score Category 6"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <hr></hr>
+            <tr>
+              <td>Total Score</td>
+              <td>{scores.upperTotal}</td>
+            </tr>
+            <tr>
+              <td>BONUS</td>
+              <td>{scores.bonus}</td>
+            </tr>
+            <tr>
+              <td>Total</td>
+              <td>{scores.upperTotalWithBonus}</td>
+            </tr>
+          </table>
         </div>
+        <div className="lower-score-view">
+          <table id="upperScore">
+            <tr>
+              <th>
+                <mark>Lower Section</mark>
+              </th>
+              <th>
+                <mark>Score</mark>
+              </th>
+            </tr>
+            <ScoreCategory
+              category={"threeOfAKind"}
+              image={ThreeOfAKind}
+              scoreFunction={threeOfAKind}
+              diceValues={diceValues}
+              alt="3 of A Kind"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category={"fourOfAKind"}
+              image={FourOfAKind}
+              scoreFunction={fourOfAKind}
+              diceValues={diceValues}
+              alt="4 of A Kind"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category={"fullHouse"}
+              image={FullHouse}
+              scoreFunction={fullHouse}
+              diceValues={diceValues}
+              alt="Full House"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category={"smallStraight"}
+              image={SmallStraight}
+              scoreFunction={smallStraight}
+              diceValues={diceValues}
+              alt="Small Straight"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category={"largeStraight"}
+              image={LargeStraight}
+              scoreFunction={largeStraight}
+              diceValues={diceValues}
+              alt="Large Straight"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category={"yahtzee"}
+              image={Yahtzee}
+              scoreFunction={yahtzee}
+              diceValues={diceValues}
+              alt="YAHTZEE"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <ScoreCategory
+              category={"chance"}
+              image={Chance}
+              scoreFunction={chance}
+              diceValues={diceValues}
+              alt="Chance"
+              whenYouSelectTheScore={whenYouSelectTheScore}
+              enableScoring={enableScoring}
+              restartGame={restartGame}
+            />
+            <div onClick={whenYouSelectBonusYahtzee}>
+              <hr></hr>
+              <tr>
+                <td>BONUS YAHTZEE</td>
+              </tr>
+              <td>{scores.bonusYahtzee}</td>
+            </div>
+            <tr>
+              <td>Total Score</td>
+              <td>{scores.lowerTotal}</td>
+            </tr>
+            <tr>
+              <td>FINAL Score</td>
+              <td>
+                {scores.finalTotalScore}
+                {gameOver && (
+                  <GameOverPopup reset={reset} score={scores.finalTotalScore} />
+                )}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div className="score-container"></div>
       </div>
+
       <DiceContainer
         rollButtonEnabled={rollButtonEnabled}
         setRollButtonEnabled={setRollButtonEnabled}
