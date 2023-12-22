@@ -38,7 +38,7 @@ function Die(props) {
       className="col-12"
       onClick={() => props.handleClickDie(props.dieIndex)}
     >
-      <div className="container">
+      <div>
         <img
           className={props.held ? "held-die" : "normal"}
           src={image}

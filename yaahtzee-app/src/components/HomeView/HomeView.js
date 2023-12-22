@@ -157,104 +157,95 @@ function HomeView() {
   };
 
   return (
-    <div className="main-view" style={{ border: "1px solid black" }}>
-      <h1> Play Yathzee!</h1>
-      <div className="score-container">
-        <div className="upper-score-view">
-          <table>
-            <tr>
-              <th>
-                <mark>Upper Section</mark>
-              </th>
-              <th>
-                <mark>Score</mark>
-              </th>
-            </tr>
-            <ScoreCategory
-              category="ones"
-              image={DiceImage1}
-              scoreFunction={scoreOnes}
-              diceValues={diceValues}
-              alt="Score Category 1"
-              whenYouSelectTheScore={whenYouSelectTheScore}
-              enableScoring={enableScoring}
-              restartGame={restartGame}
-            />
-            <ScoreCategory
-              category="twos"
-              image={DiceImage2}
-              scoreFunction={scoreTwos}
-              text={"Once"}
-              diceValues={diceValues}
-              alt="Score Category 2"
-              whenYouSelectTheScore={whenYouSelectTheScore}
-              enableScoring={enableScoring}
-              restartGame={restartGame}
-            />
-            <ScoreCategory
-              category="threes"
-              image={DiceImage3}
-              scoreFunction={scoreThree}
-              diceValues={diceValues}
-              alt="Score Category 3"
-              whenYouSelectTheScore={whenYouSelectTheScore}
-              enableScoring={enableScoring}
-              restartGame={restartGame}
-            />
-            <ScoreCategory
-              category="fours"
-              image={DiceImage4}
-              scoreFunction={scoreFours}
-              diceValues={diceValues}
-              alt="Score Category 4"
-              whenYouSelectTheScore={whenYouSelectTheScore}
-              enableScoring={enableScoring}
-              restartGame={restartGame}
-            />
-            <ScoreCategory
-              category="fives"
-              image={DiceImage5}
-              scoreFunction={scoreFives}
-              diceValues={diceValues}
-              alt="Score Category 5"
-              whenYouSelectTheScore={whenYouSelectTheScore}
-              enableScoring={enableScoring}
-              restartGame={restartGame}
-            />
-            <ScoreCategory
-              category="sixes"
-              image={DiceImage6}
-              scoreFunction={scoreSixes}
-              diceValues={diceValues}
-              alt="Score Category 6"
-              whenYouSelectTheScore={whenYouSelectTheScore}
-              enableScoring={enableScoring}
-              restartGame={restartGame}
-            />
-            <hr></hr>
-            <tr>
-              <td>Total Score</td>
-              <td>{scores.upperTotal}</td>
-            </tr>
-            <tr>
-              <td>BONUS</td>
-              <td>{scores.bonus}</td>
-            </tr>
-            <tr>
-              <td>Total</td>
-              <td>{scores.upperTotalWithBonus}</td>
-            </tr>
-          </table>
-        </div>
-        <div className="lower-score-view">
+    <div class="container-fluid">
+      <h1> Player 1</h1>
+      <div className="score-container container-fluid">
+        <table>
+          <tr class="colum">
+            <th>Upper Section</th>
+            <th>Score</th>
+          </tr>
+          <ScoreCategory
+            category="ones"
+            image={DiceImage1}
+            scoreFunction={scoreOnes}
+            diceValues={diceValues}
+            alt="Score Category 1"
+            whenYouSelectTheScore={whenYouSelectTheScore}
+            enableScoring={enableScoring}
+            restartGame={restartGame}
+          />
+          <ScoreCategory
+            category="twos"
+            image={DiceImage2}
+            scoreFunction={scoreTwos}
+            text={"Once"}
+            diceValues={diceValues}
+            alt="Score Category 2"
+            whenYouSelectTheScore={whenYouSelectTheScore}
+            enableScoring={enableScoring}
+            restartGame={restartGame}
+          />
+          <ScoreCategory
+            category="threes"
+            image={DiceImage3}
+            scoreFunction={scoreThree}
+            diceValues={diceValues}
+            alt="Score Category 3"
+            whenYouSelectTheScore={whenYouSelectTheScore}
+            enableScoring={enableScoring}
+            restartGame={restartGame}
+          />
+          <ScoreCategory
+            category="fours"
+            image={DiceImage4}
+            scoreFunction={scoreFours}
+            diceValues={diceValues}
+            alt="Score Category 4"
+            whenYouSelectTheScore={whenYouSelectTheScore}
+            enableScoring={enableScoring}
+            restartGame={restartGame}
+          />
+          <ScoreCategory
+            category="fives"
+            image={DiceImage5}
+            scoreFunction={scoreFives}
+            diceValues={diceValues}
+            alt="Score Category 5"
+            whenYouSelectTheScore={whenYouSelectTheScore}
+            enableScoring={enableScoring}
+            restartGame={restartGame}
+          />
+          <ScoreCategory
+            category="sixes"
+            image={DiceImage6}
+            scoreFunction={scoreSixes}
+            diceValues={diceValues}
+            alt="Score Category 6"
+            whenYouSelectTheScore={whenYouSelectTheScore}
+            enableScoring={enableScoring}
+            restartGame={restartGame}
+          />
+          <hr></hr>
+          <tr>
+            <td>Total Score</td>
+            <td>{scores.upperTotal}</td>
+          </tr>
+          <tr>
+            <td>BONUS</td>
+            <td>{scores.bonus}</td>
+          </tr>
+          <tr>
+            <td>Total</td>
+            <td>{scores.upperTotalWithBonus}</td>
+          </tr>
+        </table>
+
+        <div>
           <table id="upperScore">
-            <tr>
-              <th>
-                <mark>Lower Section</mark>
-              </th>
-              <th>
-                <mark>Score</mark>
-              </th>
+            <tr class="colum">
+              <th>Lower Section</th>
+              <th>Score</th>
             </tr>
             <ScoreCategory
               category={"threeOfAKind"}
@@ -350,7 +341,6 @@ function HomeView() {
         </div>
         <div className="score-container"></div>
       </div>
-
       <DiceContainer
         rollButtonEnabled={rollButtonEnabled}
         setRollButtonEnabled={setRollButtonEnabled}

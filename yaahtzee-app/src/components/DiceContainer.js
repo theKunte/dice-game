@@ -49,13 +49,13 @@ function DiceContainer(props) {
 
   return (
     <div>
-      <div className="roll-dice-bottom-view">
-        <div className="roll-dice-button">
+      <div className="roll-dice-btn">
+        <div>
           <button
             type="button"
             onClick={rollDice}
             disabled={!props.rollButtonEnabled}
-            className="roll-dice-btn"
+            class="btn btn-success"
           >
             {props.rollsRemaining === 0
               ? "No rolls remaining"
