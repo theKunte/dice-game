@@ -5,17 +5,13 @@ h1 {
 .scoreboard {
   width: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
-
+.upper-score,
 .lower-score {
   background-color: var(--secondary-color);
   width: 45%;
-}
-
-.upper-score {
-  background-color: var(--main-color);
-  width: 45%;
+  margin: 0 20px;
 }
 
 .upper-square {
@@ -37,9 +33,11 @@ h1 {
 .dice {
   display: inline-flex;
   height: auto;
-  max-width: 100%;
   background-color: rgb(80, 117, 181);
   margin-bottom: 10px;
+}
+
+.dice-container {
 }
 
 .square,

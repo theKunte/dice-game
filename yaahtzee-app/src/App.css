@@ -11,5 +11,20 @@
 
 .App-body {
   width: 600px;
+  display: flex;
   background-color: #b4c8c8;
+}
+
+/* Media query for smaller screens (e.g., mobile devices) */
+@media screen and (max-width: 412px) {
+  .scoreboard {
+    width: fit-content;
+    justify-content: center;
+  }
+  .dice-container {
+    display: flex;
+  }
+  .App-body {
+    width: fit-content;
+  }
 }

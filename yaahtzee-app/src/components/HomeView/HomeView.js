@@ -340,18 +340,20 @@ function HomeView() {
           </table>
         </div>
       </div>
-      <DiceContainer
-        rollButtonEnabled={rollButtonEnabled}
-        setRollButtonEnabled={setRollButtonEnabled}
-        turnsRemaining={turnsRemaining}
-        setTurnsRemaining={setTurnsRemaining}
-        updateDiceValues={updateDiceValues}
-        rollsRemaining={rollsRemaining}
-        setRollsRemaining={setRollsRemaining}
-        setEnableScoring={setEnableScoring}
-        heldDice={heldDice}
-        setHeldDice={setHeldDice}
-      />
+      <div>
+        <DiceContainer
+          rollButtonEnabled={rollButtonEnabled}
+          setRollButtonEnabled={setRollButtonEnabled}
+          turnsRemaining={turnsRemaining}
+          setTurnsRemaining={setTurnsRemaining}
+          updateDiceValues={updateDiceValues}
+          rollsRemaining={rollsRemaining}
+          setRollsRemaining={setRollsRemaining}
+          setEnableScoring={setEnableScoring}
+          heldDice={heldDice}
+          setHeldDice={setHeldDice}
+        />
+      </div>
     </div>
   );
 }

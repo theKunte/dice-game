@@ -50,7 +50,7 @@ function DiceContainer(props) {
   return (
     <div>
       <div className="roll-dice-btn">
-        <div class="d-flex justify-content-center mb-3">
+        <div className="d-flex justify-content-center mb-3">
           <button
             type="button"
             onClick={rollDice}
@@ -67,8 +67,8 @@ function DiceContainer(props) {
       </div>
       <div className="dice">
         {props.rollsRemaining < 3 && (
-          <div class="row">
-            <div class="col">
+          <div className="row">
+            <div className="col">
               <Die
                 imageIndex={imageIndex[0]}
                 updateDiceValues={props.updateDiceValues}
@@ -77,7 +77,7 @@ function DiceContainer(props) {
                 dieIndex={0}
               />
             </div>
-            <div class="col">
+            <div className="col">
               <Die
                 imageIndex={imageIndex[1]}
                 updateDiceValues={props.updateDiceValues}
@@ -86,7 +86,7 @@ function DiceContainer(props) {
                 dieIndex={1}
               />
             </div>
-            <div class="col">
+            <div className="col">
               <Die
                 imageIndex={imageIndex[2]}
                 updateDiceValues={props.updateDiceValues}
@@ -95,7 +95,7 @@ function DiceContainer(props) {
                 dieIndex={2}
               />
             </div>
-            <div class="col">
+            <div className="col">
               <Die
                 imageIndex={imageIndex[3]}
                 updateDiceValues={props.updateDiceValues}
@@ -104,7 +104,7 @@ function DiceContainer(props) {
                 dieIndex={3}
               />
             </div>
-            <div class="col">
+            <div className="col">
               <Die
                 imageIndex={imageIndex[4]}
                 updateDiceValues={props.updateDiceValues}
