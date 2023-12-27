@@ -50,7 +50,7 @@ function DiceContainer(props) {
   return (
     <div>
       <div className="roll-dice-btn">
-        <div>
+        <div class="d-flex justify-content-center mb-3">
           <button
             type="button"
             onClick={rollDice}
@@ -65,7 +65,7 @@ function DiceContainer(props) {
           </button>
         </div>
       </div>
-      <div className="dice-view">
+      <div className="dice">
         {props.rollsRemaining < 3 && (
           <div class="row">
             <div class="col">

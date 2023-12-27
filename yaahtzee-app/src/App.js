@@ -3,10 +3,9 @@ import HomeView from "./components/HomeView/HomeView";
 
 function App() {
   return (
-    <div className="Yahtzee-App">
-      <header className="Yahtzee-game">
-        <h1 className="h"> Welcome to Yahtzee</h1>
-      </header>
+    <div className="yathzee-app">
+      <h1> Welcome to Yahtzee</h1>
+
       <div className="App-body">
         <HomeView />
       </div>

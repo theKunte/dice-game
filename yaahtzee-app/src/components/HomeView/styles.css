@@ -1,27 +1,21 @@
-:root {
-  padding: 20px 10px;
-  background-color: #135353;
-  display: inline-flex;
-}
-
 h1 {
   text-align: center;
 }
 
-.score-container {
-  display: inline-flex;
+.scoreboard {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
-.lower-score-view {
+.lower-score {
   background-color: var(--secondary-color);
-  justify-content: center;
+  width: 45%;
 }
 
-.upper-score-view {
+.upper-score {
   background-color: var(--main-color);
-  flex: 1;
-  align-items: center;
-  /* justify-content: center; */
+  width: 45%;
 }
 
 .upper-square {
@@ -30,16 +24,8 @@ h1 {
 }
 
 .roll-dice-btn {
-  background-color: #4caf50;
   border: none;
   color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20px;
-  margin: 10px;
-  cursor: pointer;
-  border-radius: 4px;
 }
 
 .roll-dice-btn:disabled {
@@ -48,10 +34,10 @@ h1 {
   cursor: not-allowed;
 }
 
-.dice-view {
+.dice {
   display: inline-flex;
   height: auto;
-  width: auto;
+  max-width: 100%;
   background-color: rgb(80, 117, 181);
   margin-bottom: 10px;
 }

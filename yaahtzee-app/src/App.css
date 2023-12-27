@@ -1,18 +1,15 @@
-.Yahtzee-App {
-  text-align: center;
-  background-color: #b4c8c8;
-}
-.App-header {
-  background-color: #282c34;
-  min-height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+:root {
+  display: inline-flex;
   justify-content: center;
+  background-color: #135353;
 }
+
+/* .yathzee-app {
+  justify-content: center;
+  display: inline;
+} */
+
 .App-body {
-  width: 90%;
-  height: auto;
-  margin: 0 auto;
-  justify-content: center;
+  width: 600px;
+  background-color: #b4c8c8;
 }
