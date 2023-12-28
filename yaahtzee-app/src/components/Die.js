@@ -35,16 +35,15 @@ function Die(props) {
 
   return (
     <div
-      className="square"
+      className="col-12"
       onClick={() => props.handleClickDie(props.dieIndex)}
     >
-      <div className="container">
+      <div>
         <img
-          className={holdDice ? "held-die" : "normal"}
+          className={props.held ? "held-die" : "normal"}
           src={image}
           alt="dice"
-        ></img>
-        <div style={{ width: "5px", display: "inline-block" }}></div>
+        />
       </div>
     </div>
   );

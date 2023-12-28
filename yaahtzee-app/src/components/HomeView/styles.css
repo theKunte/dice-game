@@ -1,80 +1,27 @@
-:root {
-  --main-color: cadetblue;
-  --secondary-color: aliceblue;
-  --highlight-color: yellow;
+h1 {
+  text-align: center;
 }
 
-.main-view {
-  padding: 0 90px;
-  position: initial;
-  height: 100%;
+.scoreboard {
   width: auto;
-  overflow: auto;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  background-color: #045c5c;
-}
-
-.score-container {
   display: flex;
+  justify-content: center;
 }
-
-.lower-score-view {
+.upper-score,
+.lower-score {
   background-color: var(--secondary-color);
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: rem;
-}
-
-.upper-score-view {
-  padding: 1rem;
-  background-color: var(--main-color);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  align-items: center;
-  justify-content: center;
+  width: 45%;
+  margin: 0 20px;
 }
 
 .upper-square {
-  height: 10%;
-  width: 10%;
-}
-
-.btn {
-  display: block;
-  width: 20%;
-}
-
-.roll-dice-bottom-view {
-  background-color: beige;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.roll-dice-button {
-  text-align: center;
+  height: 27%;
+  width: 27%;
 }
 
 .roll-dice-btn {
-  background-color: #4caf50;
   border: none;
   color: white;
-  padding: 12px 24px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
 }
 
 .roll-dice-btn:disabled {
@@ -83,27 +30,18 @@
   cursor: not-allowed;
 }
 
-.dice-view {
+.dice {
+  display: inline-flex;
   height: auto;
-  width: auto;
-  overflow: auto;
-  background-color: rgb(181, 80, 80);
+  background-color: rgb(80, 117, 181);
   margin-bottom: 10px;
-}
-
-.container {
-  text-align: center;
 }
 
 .square,
 .held-die,
 .normal {
-  height: 25%;
-  width: 20%;
+  width: 100%;
   display: inline-block;
-  box-sizing: border-box;
-  vertical-align: middle;
-  padding-bottom: 1em;
 }
 
 .held-die {
@@ -114,15 +52,12 @@
   background-color: yellow;
 }
 
-table {
+table,
+th,
+td {
+  text-align: left;
   font-family: arial, sans-serif;
   border: 1px solid black;
-}
-
-td,
-th {
-  text-align: left;
-  padding: 8px;
 }
 
 .game-over-popup {
@@ -134,5 +69,5 @@ th {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  z-index: 1; /* Ensure the popup appears over other elements */
+  z-index: 1;
 }

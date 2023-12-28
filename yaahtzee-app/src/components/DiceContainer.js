@@ -49,14 +49,13 @@ function DiceContainer(props) {
 
   return (
     <div>
-      {/* TODO:fix number of rolls. User should see that they have a total of 3 */}
-      <div className="roll-dice-bottom-view">
-        <div className="roll-dice-button">
+      <div className="roll-dice-btn">
+        <div className="d-flex justify-content-center mb-3">
           <button
             type="button"
             onClick={rollDice}
             disabled={!props.rollButtonEnabled}
-            className="roll-dice-btn"
+            className="btn btn-success"
           >
             {props.rollsRemaining === 0
               ? "No rolls remaining"
@@ -66,44 +65,54 @@ function DiceContainer(props) {
           </button>
         </div>
       </div>
-      <div className="dice-view">
+      <div className="dice">
         {props.rollsRemaining < 3 && (
-          <div className="container">
-            <Die
-              imageIndex={imageIndex[0]}
-              updateDiceValues={props.updateDiceValues}
-              handleClickDie={holdDie}
-              held={props.heldDice[0]}
-              dieIndex={0}
-            />
-            <Die
-              imageIndex={imageIndex[1]}
-              updateDiceValues={props.updateDiceValues}
-              handleClickDie={holdDie}
-              held={props.heldDice[1]}
-              dieIndex={1}
-            />
-            <Die
-              imageIndex={imageIndex[2]}
-              updateDiceValues={props.updateDiceValues}
-              handleClickDie={holdDie}
-              held={props.heldDice[2]}
-              dieIndex={2}
-            />
-            <Die
-              imageIndex={imageIndex[3]}
-              updateDiceValues={props.updateDiceValues}
-              handleClickDie={holdDie}
-              held={props.heldDice[3]}
-              dieIndex={3}
-            />
-            <Die
-              imageIndex={imageIndex[4]}
-              updateDiceValues={props.updateDiceValues}
-              handleClickDie={holdDie}
-              held={props.heldDice[4]}
-              dieIndex={4}
-            />
+          <div className="row">
+            <div className="col">
+              <Die
+                imageIndex={imageIndex[0]}
+                updateDiceValues={props.updateDiceValues}
+                handleClickDie={holdDie}
+                held={props.heldDice[0]}
+                dieIndex={0}
+              />
+            </div>
+            <div className="col">
+              <Die
+                imageIndex={imageIndex[1]}
+                updateDiceValues={props.updateDiceValues}
+                handleClickDie={holdDie}
+                held={props.heldDice[1]}
+                dieIndex={1}
+              />
+            </div>
+            <div className="col">
+              <Die
+                imageIndex={imageIndex[2]}
+                updateDiceValues={props.updateDiceValues}
+                handleClickDie={holdDie}
+                held={props.heldDice[2]}
+                dieIndex={2}
+              />
+            </div>
+            <div className="col">
+              <Die
+                imageIndex={imageIndex[3]}
+                updateDiceValues={props.updateDiceValues}
+                handleClickDie={holdDie}
+                held={props.heldDice[3]}
+                dieIndex={3}
+              />
+            </div>
+            <div className="col">
+              <Die
+                imageIndex={imageIndex[4]}
+                updateDiceValues={props.updateDiceValues}
+                handleClickDie={holdDie}
+                held={props.heldDice[4]}
+                dieIndex={4}
+              />
+            </div>
           </div>
         )}
       </div>

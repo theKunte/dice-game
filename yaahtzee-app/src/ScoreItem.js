@@ -41,7 +41,7 @@ export function calculateLowerTotal(scores) {
     largeStraight,
     yahtzee,
     chance,
-    bonusYahtzee, // Add bonusYahtzee score
+    // bonusYahtzee, // Add bonusYahtzee score
   } = scores;
 
   let lowerTotal = 0;
@@ -67,9 +67,9 @@ export function calculateLowerTotal(scores) {
   if (chance >= 0) {
     lowerTotal += chance;
   }
-  if (bonusYahtzee >= 0) {
-    lowerTotal += bonusYahtzee; // Add bonusYahtzee score
-  }
+  // if (bonusYahtzee >= 0) {
+  //   lowerTotal += bonusYahtzee; // Add bonusYahtzee score
+  // }
 
   return lowerTotal;
 }
@@ -174,6 +174,7 @@ export const yahtzee = (diceValues) => {
   }
 };
 
+// REMOVED Bonus Yathzee for the moment
 export const calculateBonusYahtzee = (scores, diceValues) => {
   let total = 0;
   if (scores.yahtzee === 50) {

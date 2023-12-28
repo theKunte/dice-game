@@ -1,18 +1,25 @@
-.Yahtzee-App {
-  text-align: center;
+:root {
+  display: inline-flex;
+  justify-content: center;
+  background-color: #135353;
+}
+
+.App-body {
+  width: 600px;
+  display: flex;
   background-color: #b4c8c8;
 }
-.App-header {
-  background-color: #282c34;
-  min-height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.App-body {
-  width: 90%;
-  height: auto;
-  margin: 0 auto;
-  justify-content: center;
+
+/* Media query for smaller screens (e.g., mobile devices) */
+@media screen and (max-width: 420px), screen and (max-height: 670px) {
+  .scoreboard {
+    width: fit-content;
+    justify-content: center;
+  }
+  .dice-container {
+    display: flex;
+  }
+  .App-body {
+    width: fit-content;
+  }
 }
