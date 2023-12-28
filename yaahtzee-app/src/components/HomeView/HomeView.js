@@ -157,15 +157,17 @@ function HomeView() {
   };
 
   return (
-    <div class="container-fluid game-view">
+    <div className="container-fluid game-view">
       <h1> Player 1 </h1>
       <div className="scoreboard">
         <div className="upper-score">
-          <table class="table">
-            <tr>
-              <th>Upper Section</th>
-              <th>Score</th>
-            </tr>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Upper Section</th>
+                <th>Score</th>
+              </tr>
+            </thead>
             <ScoreCategory
               category="ones"
               image={DiceImage1}
@@ -243,11 +245,13 @@ function HomeView() {
         </div>
 
         <div className="lower-score">
-          <table class="table">
-            <tr>
-              <th>Lower Section</th>
-              <th>Score</th>
-            </tr>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Lower Section</th>
+                <th>Score</th>
+              </tr>
+            </thead>
             <ScoreCategory
               category={"threeOfAKind"}
               image={ThreeOfAKind}
@@ -318,6 +322,7 @@ function HomeView() {
               enableScoring={enableScoring}
               restartGame={restartGame}
             />
+            TODO: fix Bonus Yathzee and final score category
             <div onClick={whenYouSelectBonusYahtzee}>
               <tr>
                 <td>BONUS YAHTZEE</td>

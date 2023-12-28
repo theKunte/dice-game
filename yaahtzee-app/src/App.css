@@ -4,11 +4,6 @@
   background-color: #135353;
 }
 
-/* .yathzee-app {
-  justify-content: center;
-  display: inline;
-} */
-
 .App-body {
   width: 600px;
   display: flex;
@@ -16,7 +11,7 @@
 }
 
 /* Media query for smaller screens (e.g., mobile devices) */
-@media screen and (max-width: 412px) {
+@media screen and (max-width: 420px), screen and (max-height: 670px) {
   .scoreboard {
     width: fit-content;
     justify-content: center;

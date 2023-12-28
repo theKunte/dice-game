@@ -55,7 +55,7 @@ function DiceContainer(props) {
             type="button"
             onClick={rollDice}
             disabled={!props.rollButtonEnabled}
-            class="btn btn-success"
+            className="btn btn-success"
           >
             {props.rollsRemaining === 0
               ? "No rolls remaining"
