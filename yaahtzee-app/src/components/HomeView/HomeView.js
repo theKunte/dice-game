@@ -322,13 +322,8 @@ function HomeView() {
               enableScoring={enableScoring}
               restartGame={restartGame}
             />
-            TODO: fix Bonus Yathzee and final score category
-            <div onClick={whenYouSelectBonusYahtzee}>
-              <tr>
-                <td>BONUS YAHTZEE</td>
-              </tr>
-              <td>{scores.bonusYahtzee}</td>
-            </div>
+            {/* TODO: fix Bonus Yathzee and final score category */}
+
             <tr>
               <td>Total Score</td>
               <td>{scores.lowerTotal}</td>
