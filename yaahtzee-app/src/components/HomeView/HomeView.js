@@ -262,6 +262,7 @@ function HomeView() {
               enableScoring={enableScoring}
               restartGame={restartGame}
             />
+
             <ScoreCategory
               category={"fourOfAKind"}
               image={FourOfAKind}
