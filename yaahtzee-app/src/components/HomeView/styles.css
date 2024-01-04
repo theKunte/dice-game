@@ -33,7 +33,7 @@ h1 {
 .dice {
   display: inline-flex;
   height: auto;
-  background-color: rgb(80, 117, 181);
+  background-color: #f8afa6;
   margin-bottom: 10px;
 }
 
@@ -45,11 +45,11 @@ h1 {
 }
 
 .held-die {
-  background-color: rgb(40, 103, 106);
+  background-color: rgb(226, 105, 53);
 }
 
 .selected {
-  background-color: yellow;
+  background-color: rgb(243, 209, 175);
 }
 
 table,
@@ -61,13 +61,11 @@ td {
 }
 
 .game-over-popup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  justify-content: center;
   transform: translate(-50%, -50%);
   background-color: #ffffff;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 10%;
+  border-radius: 10%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }

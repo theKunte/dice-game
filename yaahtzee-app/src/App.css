@@ -1,19 +1,19 @@
 :root {
   display: inline-flex;
   justify-content: center;
-  background-color: #135353;
+  background-color: #f9f1f0;
 }
 
 .App-body {
   width: 600px;
   display: flex;
-  background-color: #b4c8c8;
+  background-color: #e79087;
 }
 
 /* Media query for smaller screens (e.g., mobile devices) */
-@media screen and (max-width: 420px), screen and (max-height: 670px) {
+@media screen and (max-width: 420px), screen and (max-height: 570px) {
   .scoreboard {
-    width: fit-content;
+    width: 45%;
     justify-content: center;
   }
   .dice-container {

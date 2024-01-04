@@ -262,6 +262,7 @@ function HomeView() {
               enableScoring={enableScoring}
               restartGame={restartGame}
             />
+
             <ScoreCategory
               category={"fourOfAKind"}
               image={FourOfAKind}
@@ -323,21 +324,26 @@ function HomeView() {
               restartGame={restartGame}
             />
             {/* TODO: fix Bonus Yathzee and final score category */}
-
+            {/* <div onClick={whenYouSelectBonusYahtzee}>
+              <tr>
+                <td>BONUS YAHTZEE</td>
+              </tr>
+              <td>{scores.bonusYahtzee}</td>
+            </div> */}
             <tr>
               <td>Total Score</td>
               <td>{scores.lowerTotal}</td>
             </tr>
             <tr>
               <td>FINAL Score</td>
-              <td>
-                {scores.finalTotalScore}
-                {gameOver && (
-                  <GameOverPopup reset={reset} score={scores.finalTotalScore} />
-                )}
-              </td>
+              <td>{scores.finalTotalScore}</td>
             </tr>
           </table>
+          <div>
+            {gameOver && (
+              <GameOverPopup reset={reset} score={scores.finalTotalScore} />
+            )}
+          </div>
         </div>
       </div>
       <div>
