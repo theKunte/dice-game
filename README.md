@@ -1,4 +1,6 @@
 # yaahtzee-react-game
+![image](https://github.com/theKunte/yaahtzee-react-game/assets/32443542/5f248380-4d1a-4a1b-9073-29e7890f0a06)
+
 
 The objective of the game is to score points by rolling certain combinations of numbers on the dice. The rules of Yahtzee are as follows:
 
