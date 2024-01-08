@@ -15,6 +15,8 @@ The objective of the game is to score points by rolling certain combinations of 
 4. Each scoring category can only be used once, so players must choose which category to use for each turn.
 
 5. The player with the highest total score after all 13 rounds is the winner.
+6. ![image](https://github.com/theKunte/yaahtzee-react-game/assets/32443542/73a4a72d-b762-4a3b-bfa8-99da97414258)
+
 
 ## The 13 scoring categories are:
 
