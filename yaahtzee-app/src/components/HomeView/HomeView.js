@@ -158,7 +158,7 @@ function HomeView() {
 
   return (
     <div className="container-fluid game-view">
-      <h1> Player 1 </h1>
+      <h1>DICE GAME </h1>
       <div className="scoreboard">
         <div className="upper-score">
           <table className="table">
