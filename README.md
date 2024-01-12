@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# dice-game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The objective of the game is to score points by rolling certain combinations of numbers on the dice. The rules of Yahtzee are as follows:
 
-## Available Scripts
+The game is played with five dice.
 
-In the project directory, you can run:
+The objective of the game is to score points by rolling certain combinations of numbers on the dice.
 
-### `npm start`
+1. Each player takes turns rolling the dice up to three times per turn.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. After each roll, the player can choose which dice to keep and which to reroll.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. At the end of the turn, the player must score in one of the 13 scoring categories on the scorecard.
 
-### `npm test`
+4. Each scoring category can only be used once, so players must choose which category to use for each turn.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. The player with the highest total score after all 13 rounds is the winner.
 
-### `npm run build`
+![image](https://github.com/theKunte/yaahtzee-react-game/assets/32443542/34774ab0-f46c-4e63-a306-0dfc9abb4aca)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## The 13 scoring categories are:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ones: Score the sum of all dice that show a 1.
+Twos: Score the sum of all dice that show a 2.
+Threes: Score the sum of all dice that show a 3.
+Fours: Score the sum of all dice that show a 4.
+Fives: Score the sum of all dice that show a 5.
+Sixes: Score the sum of all dice that show a 6.
+Three of a Kind: Score the sum of all dice if you have at least three of the same number.
+Four of a Kind: Score the sum of all dice if you have at least four of the same number.
+Full House: Score 25 points if you have three of a kind and a pair.
+Small Straight: Score 30 points if you have four consecutive numbers.
+Large Straight: Score 40 points if you have five consecutive numbers.
+Yahtzee: Score 50 points if you have all five dice showing the same number.
+Chance: Score the sum of all dice regardless of what they show.
