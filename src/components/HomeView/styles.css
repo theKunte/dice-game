@@ -10,8 +10,8 @@ h1 {
 .upper-score,
 .lower-score {
   background-color: var(--secondary-color);
-  width: 45%;
-  margin: 0 20px;
+  width: 55%;
+  margin: 0 5px;
 }
 
 .upper-square {
@@ -63,9 +63,10 @@ td {
 .game-over-popup {
   justify-content: center;
   transform: translate(-50%, -50%);
-  background-color: #ffffff;
+  background-color: #ffffff; /* White background for clarity */
   padding: 10%;
   border-radius: 10%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  color: #333333; /* Dark Gray text for readability */
 }

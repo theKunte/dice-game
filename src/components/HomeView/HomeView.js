@@ -165,6 +165,7 @@ function HomeView() {
             <thead>
               <tr>
                 <th>Upper Section</th>
+                <th>Category</th>
                 <th>Score</th>
               </tr>
             </thead>
@@ -249,6 +250,7 @@ function HomeView() {
             <thead>
               <tr>
                 <th>Lower Section</th>
+                <th>Category</th>
                 <th>Score</th>
               </tr>
             </thead>

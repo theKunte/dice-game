@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export default function ScoreCategory(props) {
   const [categoryScore, setCategoryScore] = useState(null);
   const [used, setUsed] = useState(false);
+  const [description, setDiscription] = useState(true);
 
   useEffect(() => {
     if (props.restartGame === true) {
@@ -33,6 +34,8 @@ export default function ScoreCategory(props) {
         <td>
           <img className="upper-square" src={props.image} alt={props.alt}></img>
         </td>
+        <td>description</td>
+
         <td>{used ? categoryScore : ""}</td>
       </tr>
     </tbody>
