@@ -44,14 +44,12 @@ export default function ScoreCategory(props) {
   const description = categoryDescriptions[props.category] || "";
 
   return (
-    <tbody>
-      <tr className={rowClass} onClick={handleClick}>
-        <td>
-          <img className="upper-square" src={props.image} alt={props.alt}></img>
-        </td>
-        <td>{description}</td>
-        <td>{used ? categoryScore : ""}</td>
-      </tr>
-    </tbody>
+    <tr className={rowClass} onClick={handleClick}>
+      <td>
+        <img className="upper-square" src={props.image} alt={props.alt}></img>
+      </td>
+      <td>{description}</td>
+      <td>{used ? categoryScore : ""}</td>
+    </tr>
   );
 }
