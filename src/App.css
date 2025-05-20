@@ -66,20 +66,36 @@ h1 {
     gap: 8px;
     width: 100vw;
     align-items: center;
-  }
-  .upper-score, .lower-score {
-    width: 98vw;
-    min-width: 0;
-    padding: 6px 2px 6px 2px;
-    margin: 0 auto 8px auto;
     box-sizing: border-box;
   }
+  .upper-score, .lower-score {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    padding: 0;
+    margin: 0 auto 8px auto;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
   table {
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0;
     font-size: 0.95rem;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    table-layout: fixed;
+    overflow-x: auto;
+  }
+  th, td {
+    word-break: break-word;
+    white-space: normal;
+    box-sizing: border-box;
+    padding: 4px 2px;
   }
   .upper-square {
-    height: 32px;
-    width: 32px;
+    height: 28px;
+    width: 28px;
   }
 }
 
@@ -92,19 +108,35 @@ h1 {
   .scoreboard {
     width: 100vw;
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
   }
   .upper-score, .lower-score {
-    width: 99vw;
+    width: 100vw;
+    max-width: 100vw;
     min-width: 0;
-    padding: 2px 0;
-    margin: 0 auto 4px auto;
+    padding: 0;
+    margin: 0 auto 8px auto;
+    box-sizing: border-box;
+    overflow-x: auto;
   }
   table {
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0;
     font-size: 0.9rem;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    table-layout: fixed;
+    overflow-x: auto;
+  }
+  th, td {
+    word-break: break-word;
+    white-space: normal;
+    box-sizing: border-box;
+    padding: 3px 1px;
   }
   .upper-square {
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
   }
 }
