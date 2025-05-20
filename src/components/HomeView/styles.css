@@ -33,6 +33,7 @@ h1 {
   border: none;
   color: white;
   margin-bottom: 12px;
+  margin-top: 32px; /* Add space above the roll dice button */
 }
 
 .roll-dice-btn button {

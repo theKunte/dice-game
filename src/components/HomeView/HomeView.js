@@ -163,13 +163,6 @@ function HomeView() {
         <div className="upper-score" style={{flex: 1, minWidth: 0, maxWidth: '420px', padding: 0, margin: 0}}>
           <div style={{fontWeight: 'bold', fontSize: '1.1rem', color: '#2a5298', marginBottom: '6px', textAlign: 'center'}}>Upper Section</div>
           <table className="table" style={{margin: 0, padding: 0}}>
-            <thead>
-              <tr>
-                <th style={{width: '60px', textAlign: 'center'}}>Icon</th>
-                <th>Category</th>
-                <th>Score</th>
-              </tr>
-            </thead>
             <tbody>
               <ScoreCategory
                 category="ones"
@@ -253,13 +246,6 @@ function HomeView() {
         <div className="lower-score" style={{flex: 1, minWidth: 0, maxWidth: '420px', padding: 0, margin: 0}}>
           <div style={{fontWeight: 'bold', fontSize: '1.1rem', color: '#2a5298', marginBottom: '6px', textAlign: 'center'}}>Lower Section</div>
           <table className="table" style={{margin: 0, padding: 0}}>
-            <thead>
-              <tr>
-                <th style={{width: '60px', textAlign: 'center'}}>Icon</th>
-                <th>Category</th>
-                <th>Score</th>
-              </tr>
-            </thead>
             <tbody>
               <ScoreCategory
                 category={"threeOfAKind"}
