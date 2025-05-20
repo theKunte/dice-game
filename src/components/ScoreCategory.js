@@ -1,5 +1,21 @@
 import { useState, useEffect } from "react";
 
+const categoryDescriptions = {
+  ones: "Once",
+  twos: "Twos",
+  threes: "Threes",
+  fours: "Fours",
+  fives: "Fives",
+  sixes: "Sixes",
+  threeOfAKind: "3 of a Kind",
+  fourOfAKind: "Four of a Kind",
+  fullHouse: "Full House",
+  smallStraight: "Small Straight",
+  largeStraight: "Large Straight",
+  yahtzee: "Yahtzee",
+  chance: "Chance",
+};
+
 export default function ScoreCategory(props) {
   const [categoryScore, setCategoryScore] = useState(null);
   const [used, setUsed] = useState(false);
@@ -13,7 +29,6 @@ export default function ScoreCategory(props) {
 
   const handleClick = () => {
     if (props.enableScoring === false) return;
-
     if (!used) {
       setScore();
     }
@@ -26,15 +41,15 @@ export default function ScoreCategory(props) {
   };
 
   const rowClass = used ? "selected" : "";
+  const description = categoryDescriptions[props.category] || "";
 
   return (
-    <tbody>
-      <tr className={rowClass} onClick={handleClick}>
-        <td>
-          <img className="upper-square" src={props.image} alt={props.alt}></img>
-        </td>
-        <td>{used ? categoryScore : ""}</td>
-      </tr>
-    </tbody>
+    <tr className={rowClass} onClick={handleClick}>
+      <td>
+        <img className="upper-square" src={props.image} alt={props.alt}></img>
+      </td>
+      <td>{description}</td>
+      <td>{used ? categoryScore : ""}</td>
+    </tr>
   );
 }

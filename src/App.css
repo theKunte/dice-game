@@ -1,25 +1,142 @@
 :root {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
-  background-color: #f9f1f0;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e0e7ef 100%);
+  min-height: 100vh;
+}
+
+body, html {
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
 .App-body {
-  width: 600px;
+  width: 100vw;
+  max-width: 700px;
+  min-width: 0;
   display: flex;
-  background-color: #e79087;
+  background: transparent;
+  border-radius: 24px;
+  box-shadow: none;
+  margin: 0 auto;
+  padding: 16px 2vw;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-/* Media query for smaller screens (e.g., mobile devices) */
-@media screen and (max-width: 420px), screen and (max-height: 570px) {
-  .scoreboard {
-    width: 45%;
-    justify-content: center;
-  }
-  .dice-container {
-    display: flex;
-  }
+h1 {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2a5298;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+  text-shadow: 1px 2px 8px #e0e7ef;
+}
+
+@media screen and (max-width: 900px) {
   .App-body {
-    width: fit-content;
+    width: 100vw;
+    max-width: 100vw;
+    padding: 8px 0.5vw;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .App-body {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 4px 0.5vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .App-body {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 2px 0.5vw;
+  }
+  .scoreboard {
+    flex-direction: column;
+    gap: 8px;
+    width: 100vw;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .upper-score, .lower-score {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    padding: 0;
+    margin: 0 auto 8px auto;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    table-layout: fixed;
+    overflow-x: auto;
+  }
+  th, td {
+    word-break: break-word;
+    white-space: normal;
+    box-sizing: border-box;
+    padding: 4px 2px;
+  }
+  .upper-square {
+    height: 28px;
+    width: 28px;
+  }
+}
+
+@media screen and (max-width: 420px), screen and (max-height: 570px) {
+  .App-body {
+    width: 100vw;
+    max-width: 100vw;
+    padding: 0;
+  }
+  .scoreboard {
+    width: 100vw;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .upper-score, .lower-score {
+    width: 100vw;
+    max-width: 100vw;
+    min-width: 0;
+    padding: 0;
+    margin: 0 auto 8px auto;
+    box-sizing: border-box;
+    overflow-x: auto;
+  }
+  table {
+    width: 100%;
+    max-width: 100vw;
+    min-width: 0;
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    box-sizing: border-box;
+    table-layout: fixed;
+    overflow-x: auto;
+  }
+  th, td {
+    word-break: break-word;
+    white-space: normal;
+    box-sizing: border-box;
+    padding: 3px 1px;
+  }
+  .upper-square {
+    height: 20px;
+    width: 20px;
   }
 }
