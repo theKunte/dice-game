@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/dice-game/static/css/main.dc3b5b1c.css",
-    "main.js": "/dice-game/static/js/main.faa899b4.js",
+    "main.css": "/dice-game/static/css/main.e231fd26.css",
+    "main.js": "/dice-game/static/js/main.3fb43f86.js",
     "static/js/787.fd9f8f4d.chunk.js": "/dice-game/static/js/787.fd9f8f4d.chunk.js",
     "static/media/threeOfAKind.jpeg": "/dice-game/static/media/threeOfAKind.9525c53aabf1f655bf51.jpeg",
     "static/media/large.jpeg": "/dice-game/static/media/large.577a662347729e80aba0.jpeg",
@@ -17,12 +17,12 @@
     "static/media/fullHouse.png": "/dice-game/static/media/fullHouse.ae16aa547742fce635c1.png",
     "static/media/Dice1.png": "/dice-game/static/media/Dice1.f0c63472452e9a2b4322.png",
     "index.html": "/dice-game/index.html",
-    "main.dc3b5b1c.css.map": "/dice-game/static/css/main.dc3b5b1c.css.map",
-    "main.faa899b4.js.map": "/dice-game/static/js/main.faa899b4.js.map",
+    "main.e231fd26.css.map": "/dice-game/static/css/main.e231fd26.css.map",
+    "main.3fb43f86.js.map": "/dice-game/static/js/main.3fb43f86.js.map",
     "787.fd9f8f4d.chunk.js.map": "/dice-game/static/js/787.fd9f8f4d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.dc3b5b1c.css",
-    "static/js/main.faa899b4.js"
+    "static/css/main.e231fd26.css",
+    "static/js/main.3fb43f86.js"
   ]
 }
