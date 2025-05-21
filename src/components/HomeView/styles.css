@@ -22,7 +22,7 @@ h1 {
   height: 48px;
   width: 48px;
   border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
   background: #fff;
   object-fit: contain;
   display: block;
@@ -88,7 +88,7 @@ table,
 th,
 td {
   text-align: left;
-  font-family: 'Segoe UI', Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   border: 1px solid #b2d7f3;
   border-radius: 6px;
   background: #fff;
@@ -113,16 +113,29 @@ td img.upper-square {
 }
 
 .game-over-popup {
-  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: #eaf6fb;
   padding: 32px 18px;
   border-radius: 18px;
   box-shadow: 0 2px 12px rgba(42, 82, 152, 0.18);
-  z-index: 1;
+  z-index: 9999;
   color: #2a5298;
   text-align: center;
   font-size: 1.3rem;
+  width: 90vw;
+  max-width: 350px;
+}
+
+@media (max-width: 600px) {
+  .game-over-popup {
+    width: 96vw;
+    max-width: 98vw;
+    padding: 18px 4vw;
+    font-size: 1.05rem;
+  }
 }
 
 .game-over-popup button {
