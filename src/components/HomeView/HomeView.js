@@ -37,39 +37,54 @@ import {
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
+const initialScores = {
+  ones: -1,
+  twos: -1,
+  threes: -1,
+  fours: -1,
+  fives: -1,
+  sixes: -1,
+  bonus: -1,
+  upperTotal: 0,
+  upperTotalWithBonus: 0,
+  threeOfAKind: -1,
+  fourOfAKind: -1,
+  fullHouse: -1,
+  smallStraight: -1,
+  largeStraight: -1,
+  yahtzee: -1,
+  chance: -1,
+  bonusYahtzee: 0,
+  lowerTotal: 0,
+  finalTotalScore: 0,
+};
+
 function HomeView() {
+  // 2 Player State
+  const [currentPlayer, setCurrentPlayer] = useState(0); // 0: Player 1, 1: Player 2
+  const [playerScores, setPlayerScores] = useState([
+    { ...initialScores },
+    { ...initialScores },
+  ]);
+  const [gameOver, setGameOver] = useState(false);
+  const [winner, setWinner] = useState(null);
+
   // Game state between Dice and Scoreboard
   const [rollButtonEnabled, setRollButtonEnabled] = useState(true);
   const [rollsRemaining, setRollsRemaining] = useState(3);
   const [turnsRemaining, setTurnsRemaining] = useState(3);
   const [heldDice, setHeldDice] = useState([false, false, false, false, false]);
-  const [gameOver, setGameOver] = useState(false);
   const [enableScoring, setEnableScoring] = useState(false);
   const [restartGame, setRestartGame] = useState(false);
-
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
-  const [scores, setScores] = useState({
-    ones: -1,
-    twos: -1,
-    threes: -1,
-    fours: -1,
-    fives: -1,
-    sixes: -1,
-    bonus: -1,
-    threeOfAKind: -1,
-    fourOfAKind: -1,
-    fullHouse: -1,
-    smallStraight: -1,
-    largeStraight: -1,
-    yahtzee: -1,
-    chance: -1,
-    bonusYahtzee: 0,
-  });
 
+  // Reset game for both players
   const reset = () => {
     setRestartGame(false);
-    setScores({}); // Reset scores object to an empty object
-    setGameOver(false); // Reset game over state to false
+    setPlayerScores([{ ...initialScores }, { ...initialScores }]);
+    setGameOver(false);
+    setWinner(null);
+    setCurrentPlayer(0);
     setRollButtonEnabled(true);
     setRollsRemaining(3);
     setTurnsRemaining(3);
@@ -78,28 +93,25 @@ function HomeView() {
     setRestartGame(true);
   };
 
+  // Update dice values
   const updateDiceValues = (dieIndex, dieValue) => {
     diceValues[dieIndex] = dieValue;
   };
 
-  const whenYouSelectBonusYahtzee = () => {
-    if (scores.yahtzee >= 0 && scores.bonusYahtzee === -1) {
-      // Update condition
-      let score = calculateBonusYahtzee(scores, diceValues);
-      setScores({ ...scores, bonusYahtzee: score });
-    }
-  };
+  // Handle scoring for current player
   const whenYouSelectTheScore = (category, score) => {
-    const tempScore = { ...scores };
+    const updatedScores = [...playerScores];
+    const tempScore = { ...updatedScores[currentPlayer] };
     tempScore[category] = score;
 
+    // Calculate upper section
     if (
       tempScore.ones >= 0 &&
       tempScore.twos >= 0 &&
       tempScore.threes >= 0 &&
       tempScore.fours >= 0 &&
       tempScore.fives >= 0 &&
-      tempScore.sixes >= 0 //when all upper sections scores are set calculate upper Bonus
+      tempScore.sixes >= 0
     ) {
       const bonus = calculateUpperBonus(tempScore);
       const upperTotal = calculateUpperTotalSection(tempScore);
@@ -109,6 +121,7 @@ function HomeView() {
       tempScore["upperTotal"] = upperTotal;
       tempScore["upperTotalWithBonus"] = upperTotalWithBonus;
     }
+    // Calculate lower section
     if (
       tempScore.threeOfAKind >= 0 &&
       tempScore.fourOfAKind >= 0 &&
@@ -120,9 +133,9 @@ function HomeView() {
       tempScore.bonusYahtzee >= 0
     ) {
       const lowerTotal = calculateLowerTotal(tempScore);
-
       tempScore["lowerTotal"] = lowerTotal;
     }
+    // Check if player finished all categories
     if (
       tempScore.ones >= 0 &&
       tempScore.twos >= 0 &&
@@ -144,25 +157,97 @@ function HomeView() {
 
       tempScore["lowerTotal"] = lowerTotal;
       tempScore["finalTotalScore"] = finalTotalScore;
-      setGameOver(true);
+      tempScore["finished"] = true;
     }
 
-    setScores(tempScore);
-    setRollButtonEnabled(true);
-    setRollsRemaining(3);
-    setTurnsRemaining(3);
-    setEnableScoring(false);
-    setHeldDice([false, false, false, false, false]);
-    setRestartGame(false);
+    updatedScores[currentPlayer] = tempScore;
+    setPlayerScores(updatedScores);
+
+    // Check if both players finished
+    if (updatedScores[0].finished && updatedScores[1].finished) {
+      setGameOver(true);
+      if (updatedScores[0].finalTotalScore > updatedScores[1].finalTotalScore) {
+        setWinner("Player 1");
+      } else if (
+        updatedScores[0].finalTotalScore < updatedScores[1].finalTotalScore
+      ) {
+        setWinner("Player 2");
+      } else {
+        setWinner("Tie");
+      }
+    } else {
+      // Switch player
+      setCurrentPlayer((prev) => (prev === 0 ? 1 : 0));
+      setRollButtonEnabled(true);
+      setRollsRemaining(3);
+      setTurnsRemaining(3);
+      setEnableScoring(false);
+      setHeldDice([false, false, false, false, false]);
+      setRestartGame(false);
+    }
   };
+
+  // Handle bonus yahtzee (if needed)
+  const whenYouSelectBonusYahtzee = () => {
+    const updatedScores = [...playerScores];
+    const tempScore = { ...updatedScores[currentPlayer] };
+    if (tempScore.yahtzee >= 0 && tempScore.bonusYahtzee === -1) {
+      let score = calculateBonusYahtzee(tempScore, diceValues);
+      tempScore.bonusYahtzee = score;
+      updatedScores[currentPlayer] = tempScore;
+      setPlayerScores(updatedScores);
+    }
+  };
+
+  // Get current player's scores
+  const scores = playerScores[currentPlayer];
 
   return (
     <div className="container-fluid game-view">
-      <h1>DICE GAME </h1>
-      <div className="scoreboard" style={{display: 'flex', flexDirection: 'row', gap: '8px', width: '100%', justifyContent: 'center', alignItems: 'flex-start', flexWrap: 'wrap', padding: 0, margin: 0}}>
-        <div className="upper-score" style={{flex: 1, minWidth: 0, maxWidth: '420px', padding: 0, margin: 0}}>
-          <div style={{fontWeight: 'bold', fontSize: '1.1rem', color: '#2a5298', marginBottom: '6px', textAlign: 'center'}}>Upper Section</div>
-          <table className="table" style={{margin: 0, padding: 0}}>
+      <div className={`current-player-banner player-${currentPlayer + 1}-turn`}>
+        {gameOver
+          ? winner === "Tie"
+            ? "It's a Tie!"
+            : `Winner: ${winner}`
+          : `Player ${currentPlayer + 1}'s Turn`}
+      </div>
+      <h1>DICE GAME</h1>
+      <div
+        className="scoreboard"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          gap: "8px",
+          width: "100%",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          flexWrap: "wrap",
+          padding: 0,
+          margin: 0,
+        }}
+      >
+        <div
+          className="upper-score"
+          style={{
+            flex: 1,
+            minWidth: 0,
+            maxWidth: "420px",
+            padding: 0,
+            margin: 0,
+          }}
+        >
+          <div
+            style={{
+              fontWeight: "bold",
+              fontSize: "1.1rem",
+              color: "#2a5298",
+              marginBottom: "6px",
+              textAlign: "center",
+            }}
+          >
+            Upper Section
+          </div>
+          <table className="table" style={{ margin: 0, padding: 0 }}>
             <tbody>
               <ScoreCategory
                 category="ones"
@@ -173,17 +258,20 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.ones}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category="twos"
                 image={DiceImage2}
                 scoreFunction={scoreTwos}
-                text={"Once"}
                 diceValues={diceValues}
                 alt="Score Category 2"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.twos}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category="threes"
@@ -194,6 +282,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.threes}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category="fours"
@@ -204,6 +294,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.fours}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category="fives"
@@ -214,6 +306,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.fives}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category="sixes"
@@ -224,6 +318,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.sixes}
+                currentPlayer={currentPlayer}
               />
             </tbody>
             <tfoot>
@@ -243,9 +339,28 @@ function HomeView() {
           </table>
         </div>
 
-        <div className="lower-score" style={{flex: 1, minWidth: 0, maxWidth: '420px', padding: 0, margin: 0}}>
-          <div style={{fontWeight: 'bold', fontSize: '1.1rem', color: '#2a5298', marginBottom: '6px', textAlign: 'center'}}>Lower Section</div>
-          <table className="table" style={{margin: 0, padding: 0}}>
+        <div
+          className="lower-score"
+          style={{
+            flex: 1,
+            minWidth: 0,
+            maxWidth: "420px",
+            padding: 0,
+            margin: 0,
+          }}
+        >
+          <div
+            style={{
+              fontWeight: "bold",
+              fontSize: "1.1rem",
+              color: "#2a5298",
+              marginBottom: "6px",
+              textAlign: "center",
+            }}
+          >
+            Lower Section
+          </div>
+          <table className="table" style={{ margin: 0, padding: 0 }}>
             <tbody>
               <ScoreCategory
                 category={"threeOfAKind"}
@@ -256,6 +371,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.threeOfAKind}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category={"fourOfAKind"}
@@ -266,6 +383,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.fourOfAKind}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category={"fullHouse"}
@@ -276,6 +395,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.fullHouse}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category={"smallStraight"}
@@ -286,6 +407,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.smallStraight}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category={"largeStraight"}
@@ -296,6 +419,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.largeStraight}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category={"yahtzee"}
@@ -306,6 +431,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.yahtzee}
+                currentPlayer={currentPlayer}
               />
               <ScoreCategory
                 category={"chance"}
@@ -316,6 +443,8 @@ function HomeView() {
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
+                score={scores.chance}
+                currentPlayer={currentPlayer}
               />
             </tbody>
             <tfoot>
@@ -331,7 +460,13 @@ function HomeView() {
           </table>
           <div>
             {gameOver && (
-              <GameOverPopup reset={reset} score={scores.finalTotalScore} />
+              <GameOverPopup
+                reset={reset}
+                score={`P1: ${playerScores[0].finalTotalScore || 0} | P2: ${
+                  playerScores[1].finalTotalScore || 0
+                }`}
+                winner={winner}
+              />
             )}
           </div>
         </div>

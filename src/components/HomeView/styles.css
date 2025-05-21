@@ -154,3 +154,44 @@ td img.upper-square {
   background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
   transform: translateY(-2px) scale(1.04);
 }
+/* Player 1 color scheme */
+.player-1-turn {
+  background: linear-gradient(90deg, #eaf6fb 60%, #b2d7f3 100%);
+  color: #1e3c72;
+}
+
+/* Player 2 color scheme */
+.player-2-turn {
+  background: linear-gradient(90deg, #eaf6fb 60%, #c463b7 100%);
+  color: #7a2a1e;
+}
+
+/* Optional: highlight score tables for each player */
+.player-1-table .upper-score,
+.player-1-table .lower-score {
+  border: 2px solid #2a5298;
+  box-shadow: 0 2px 10px rgba(42, 82, 152, 0.18);
+}
+
+.player-2-table .upper-score,
+.player-2-table .lower-score {
+  border: 6px solid #c97a4a;
+  box-shadow: 0 2px 12px rgba(201, 122, 74, 0.18);
+}
+
+.scorecat-player1 {
+  background: #eaf6fb !important;
+  color: #0c1b33 !important;
+}
+.scorecat-player2 {
+  background: #f3eaf6 !important;
+  color: #a15298 !important;
+}
+.selected.scorecat-player1 {
+  background: #b9dbf5 !important;
+  color: #31c224 !important;
+}
+.selected.scorecat-player2 {
+  background: #f3c6e6 !important;
+  color: #7a2a6e !important;
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const categoryDescriptions = {
   ones: "Once",
@@ -17,30 +17,30 @@ const categoryDescriptions = {
 };
 
 export default function ScoreCategory(props) {
-  const [categoryScore, setCategoryScore] = useState(null);
-  const [used, setUsed] = useState(false);
-
   useEffect(() => {
     if (props.restartGame === true) {
-      setCategoryScore(null);
-      setUsed(false);
+      // No local state to reset
     }
   }, [props.restartGame]);
 
   const handleClick = () => {
     if (props.enableScoring === false) return;
-    if (!used) {
+    if (props.score === -1) {
       setScore();
     }
   };
   const setScore = () => {
     const score = props.scoreFunction(props.diceValues);
-    setCategoryScore(score);
-    setUsed(true);
     props.whenYouSelectTheScore(props.category, score);
   };
 
-  const rowClass = used ? "selected" : "";
+  // Assign color class based on current player
+  // Expecting props.currentPlayer (0 or 1) to be passed from HomeView
+  let playerClass = "";
+  if (props.currentPlayer === 0) playerClass = "scorecat-player1";
+  if (props.currentPlayer === 1) playerClass = "scorecat-player2";
+
+  const rowClass = (props.score !== -1 ? "selected " : "") + playerClass;
   const description = categoryDescriptions[props.category] || "";
 
   return (
@@ -49,7 +49,7 @@ export default function ScoreCategory(props) {
         <img className="upper-square" src={props.image} alt={props.alt}></img>
       </td>
       <td>{description}</td>
-      <td>{used ? categoryScore : ""}</td>
+      <td>{props.score !== -1 ? props.score : ""}</td>
     </tr>
   );
 }
