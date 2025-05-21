@@ -60,8 +60,8 @@ const initialScores = {
 };
 
 function HomeView() {
-  // 2 Player State
-  const [currentPlayer, setCurrentPlayer] = useState(0); // 0: Player 1, 1: Player 2
+  const [gameMode, setGameMode] = useState(null); // null, "single", or "multi"
+  const [currentPlayer, setCurrentPlayer] = useState(0);
   const [playerScores, setPlayerScores] = useState([
     { ...initialScores },
     { ...initialScores },
@@ -69,7 +69,6 @@ function HomeView() {
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState(null);
 
-  // Game state between Dice and Scoreboard
   const [rollButtonEnabled, setRollButtonEnabled] = useState(true);
   const [rollsRemaining, setRollsRemaining] = useState(3);
   const [turnsRemaining, setTurnsRemaining] = useState(3);
@@ -78,7 +77,6 @@ function HomeView() {
   const [restartGame, setRestartGame] = useState(false);
   const [diceValues, setDiceValues] = useState([0, 0, 0, 0, 0]);
 
-  // Reset game for both players
   const reset = () => {
     setRestartGame(false);
     setPlayerScores([{ ...initialScores }, { ...initialScores }]);
@@ -93,18 +91,15 @@ function HomeView() {
     setRestartGame(true);
   };
 
-  // Update dice values
   const updateDiceValues = (dieIndex, dieValue) => {
     diceValues[dieIndex] = dieValue;
   };
 
-  // Handle scoring for current player
   const whenYouSelectTheScore = (category, score) => {
     const updatedScores = [...playerScores];
     const tempScore = { ...updatedScores[currentPlayer] };
     tempScore[category] = score;
 
-    // Calculate upper section
     if (
       tempScore.ones >= 0 &&
       tempScore.twos >= 0 &&
@@ -121,7 +116,6 @@ function HomeView() {
       tempScore["upperTotal"] = upperTotal;
       tempScore["upperTotalWithBonus"] = upperTotalWithBonus;
     }
-    // Calculate lower section
     if (
       tempScore.threeOfAKind >= 0 &&
       tempScore.fourOfAKind >= 0 &&
@@ -135,7 +129,6 @@ function HomeView() {
       const lowerTotal = calculateLowerTotal(tempScore);
       tempScore["lowerTotal"] = lowerTotal;
     }
-    // Check if player finished all categories
     if (
       tempScore.ones >= 0 &&
       tempScore.twos >= 0 &&
@@ -163,21 +156,32 @@ function HomeView() {
     updatedScores[currentPlayer] = tempScore;
     setPlayerScores(updatedScores);
 
-    // Check if both players finished
-    if (updatedScores[0].finished && updatedScores[1].finished) {
+    if (
+      (gameMode === "multi" &&
+        updatedScores[0].finished &&
+        updatedScores[1].finished) ||
+      (gameMode === "single" && updatedScores[0].finished)
+    ) {
       setGameOver(true);
-      if (updatedScores[0].finalTotalScore > updatedScores[1].finalTotalScore) {
-        setWinner("Player 1");
-      } else if (
-        updatedScores[0].finalTotalScore < updatedScores[1].finalTotalScore
-      ) {
-        setWinner("Player 2");
+      if (gameMode === "multi") {
+        if (
+          updatedScores[0].finalTotalScore > updatedScores[1].finalTotalScore
+        ) {
+          setWinner("Player 1");
+        } else if (
+          updatedScores[0].finalTotalScore < updatedScores[1].finalTotalScore
+        ) {
+          setWinner("Player 2");
+        } else {
+          setWinner("Tie");
+        }
       } else {
-        setWinner("Tie");
+        setWinner("You");
       }
     } else {
-      // Switch player
-      setCurrentPlayer((prev) => (prev === 0 ? 1 : 0));
+      if (gameMode === "multi") {
+        setCurrentPlayer((prev) => (prev === 0 ? 1 : 0));
+      }
       setRollButtonEnabled(true);
       setRollsRemaining(3);
       setTurnsRemaining(3);
@@ -187,7 +191,6 @@ function HomeView() {
     }
   };
 
-  // Handle bonus yahtzee (if needed)
   const whenYouSelectBonusYahtzee = () => {
     const updatedScores = [...playerScores];
     const tempScore = { ...updatedScores[currentPlayer] };
@@ -199,25 +202,124 @@ function HomeView() {
     }
   };
 
-  // Get current player's scores
   const scores = playerScores[currentPlayer];
 
+  // --- Game mode selection screen ---
+  if (!gameMode) {
+    return (
+      <div
+        className="container-fluid game-view"
+        style={{ textAlign: "center", marginTop: 40 }}
+      >
+        <h1
+          style={{
+            fontFamily: "'Segoe UI', Arial, sans-serif",
+            fontWeight: 700,
+            fontSize: "2.8rem",
+            color: "#2a5298",
+            letterSpacing: "2px",
+            marginBottom: "32px",
+            textShadow: "1px 2px 8px #e0e7ef",
+          }}
+        >
+          DICE GAME
+        </h1>
+        <div style={{ margin: "32px 0" }}>
+          <button
+            style={{
+              padding: "18px 38px",
+              fontSize: "1.25rem",
+              margin: "0 18px",
+              borderRadius: "16px",
+              background: "linear-gradient(90deg, #2a5298 0%, #1e3c72 100%)",
+              color: "#fff",
+              border: "none",
+              cursor: "pointer",
+              marginBottom: "18px",
+              fontWeight: 600,
+              boxShadow: "0 2px 12px rgba(42,82,152,0.13)",
+              transition: "background 0.2s",
+            }}
+            onClick={() => setGameMode("single")}
+          >
+            🎲 Single Player
+          </button>
+          <button
+            style={{
+              padding: "18px 38px",
+              fontSize: "1.25rem",
+              margin: "0 18px",
+              borderRadius: "16px",
+              background: "linear-gradient(90deg, #c463b7 0%, #7a2a1e 100%)",
+              color: "#fff",
+              border: "none",
+              cursor: "pointer",
+              marginBottom: "18px",
+              fontWeight: 600,
+              boxShadow: "0 2px 12px rgba(196,99,183,0.13)",
+              transition: "background 0.2s",
+            }}
+            onClick={() => setGameMode("multi")}
+          >
+            👥 Two Player
+          </button>
+        </div>
+        <div
+          style={{
+            color: "#2a5298",
+            fontSize: "1.1rem",
+            marginTop: "24px",
+            opacity: 0.8,
+          }}
+        >
+          Select a mode to start playing!
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="container-fluid game-view">
-      <div className={`current-player-banner player-${currentPlayer + 1}-turn`}>
+    <div
+      className="container-fluid game-view"
+      style={{ maxWidth: 950, margin: "0 auto" }}
+    >
+      <div
+        className={`current-player-banner player-${currentPlayer + 1}-turn`}
+        style={{
+          marginTop: 18,
+          marginBottom: 8,
+          borderRadius: 12,
+          fontSize: "1.2rem",
+          boxShadow: "0 2px 8px rgba(42,82,152,0.08)",
+        }}
+      >
         {gameOver
           ? winner === "Tie"
-            ? "It's a Tie!"
-            : `Winner: ${winner}`
-          : `Player ${currentPlayer + 1}'s Turn`}
+            ? "🤝 It's a Tie!"
+            : `🏆 Winner: ${winner}`
+          : gameMode === "multi"
+          ? `Player ${currentPlayer + 1}'s Turn`
+          : "Your Turn"}
       </div>
-      <h1>DICE GAME</h1>
+      <h1
+        style={{
+          fontFamily: "'Segoe UI', Arial, sans-serif",
+          fontWeight: 700,
+          fontSize: "2.3rem",
+          color: "#2a5298",
+          letterSpacing: "2px",
+          marginBottom: "18px",
+          textShadow: "1px 2px 8px #e0e7ef",
+        }}
+      >
+        DICE GAME
+      </h1>
       <div
         className="scoreboard"
         style={{
           display: "flex",
           flexDirection: "row",
-          gap: "8px",
+          gap: "16px",
           width: "100%",
           justifyContent: "center",
           alignItems: "flex-start",
@@ -232,17 +334,21 @@ function HomeView() {
             flex: 1,
             minWidth: 0,
             maxWidth: "420px",
-            padding: 0,
+            padding: "8px 0 0 0",
             margin: 0,
+            background: "#f8fbff",
+            borderRadius: "16px 16px 8px 8px",
+            boxShadow: "0 2px 10px rgba(42,82,152,0.07)",
           }}
         >
           <div
             style={{
               fontWeight: "bold",
-              fontSize: "1.1rem",
+              fontSize: "1.13rem",
               color: "#2a5298",
               marginBottom: "6px",
               textAlign: "center",
+              letterSpacing: "1px",
             }}
           >
             Upper Section
@@ -324,15 +430,21 @@ function HomeView() {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="2">Total Score</td>
+                <td colSpan="2" style={{ fontWeight: 600, color: "#2a5298" }}>
+                  Total Score
+                </td>
                 <td>{scores.upperTotal}</td>
               </tr>
               <tr>
-                <td colSpan="2">BONUS</td>
+                <td colSpan="2" style={{ fontWeight: 600, color: "#2a5298" }}>
+                  BONUS
+                </td>
                 <td>{scores.bonus}</td>
               </tr>
               <tr>
-                <td colSpan="2">Total</td>
+                <td colSpan="2" style={{ fontWeight: 600, color: "#2a5298" }}>
+                  Total
+                </td>
                 <td>{scores.upperTotalWithBonus}</td>
               </tr>
             </tfoot>
@@ -345,17 +457,21 @@ function HomeView() {
             flex: 1,
             minWidth: 0,
             maxWidth: "420px",
-            padding: 0,
+            padding: "8px 0 0 0",
             margin: 0,
+            background: "#f8fbff",
+            borderRadius: "16px 16px 8px 8px",
+            boxShadow: "0 2px 10px rgba(42,82,152,0.07)",
           }}
         >
           <div
             style={{
               fontWeight: "bold",
-              fontSize: "1.1rem",
+              fontSize: "1.13rem",
               color: "#2a5298",
               marginBottom: "6px",
               textAlign: "center",
+              letterSpacing: "1px",
             }}
           >
             Lower Section
@@ -449,11 +565,15 @@ function HomeView() {
             </tbody>
             <tfoot>
               <tr>
-                <td colSpan="2">Total Score</td>
+                <td colSpan="2" style={{ fontWeight: 600, color: "#2a5298" }}>
+                  Total Score
+                </td>
                 <td>{scores.lowerTotal}</td>
               </tr>
               <tr>
-                <td colSpan="2">FINAL Score</td>
+                <td colSpan="2" style={{ fontWeight: 600, color: "#2a5298" }}>
+                  FINAL Score
+                </td>
                 <td>{scores.finalTotalScore}</td>
               </tr>
             </tfoot>
@@ -462,16 +582,20 @@ function HomeView() {
             {gameOver && (
               <GameOverPopup
                 reset={reset}
-                score={`P1: ${playerScores[0].finalTotalScore || 0} | P2: ${
-                  playerScores[1].finalTotalScore || 0
-                }`}
+                score={
+                  gameMode === "multi"
+                    ? `P1: ${playerScores[0].finalTotalScore || 0} | P2: ${
+                        playerScores[1].finalTotalScore || 0
+                      }`
+                    : `Your Score: ${playerScores[0].finalTotalScore || 0}`
+                }
                 winner={winner}
               />
             )}
           </div>
         </div>
       </div>
-      <div>
+      <div style={{ marginTop: 24 }}>
         <DiceContainer
           rollButtonEnabled={rollButtonEnabled}
           setRollButtonEnabled={setRollButtonEnabled}
