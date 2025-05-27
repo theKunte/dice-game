@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/dice-game/static/css/main.e231fd26.css",
-    "main.js": "/dice-game/static/js/main.3fb43f86.js",
+    "main.js": "/dice-game/static/js/main.463bab0e.js",
     "static/js/787.fd9f8f4d.chunk.js": "/dice-game/static/js/787.fd9f8f4d.chunk.js",
     "static/media/threeOfAKind.jpeg": "/dice-game/static/media/threeOfAKind.9525c53aabf1f655bf51.jpeg",
     "static/media/large.jpeg": "/dice-game/static/media/large.577a662347729e80aba0.jpeg",
     "static/media/fourOfAKind.jpeg": "/dice-game/static/media/fourOfAKind.606353aee27b0f00aea5.jpeg",
     "static/media/small.jpeg": "/dice-game/static/media/small.4afc2e1eba3d707ddddd.jpeg",
-    "static/media/yahtzee.jpeg": "/dice-game/static/media/yahtzee.d0a7b692d9f6f355f3d6.jpeg",
+    "static/media/strike.jpeg": "/dice-game/static/media/strike.d0a7b692d9f6f355f3d6.jpeg",
     "static/media/chance.jpeg": "/dice-game/static/media/chance.81278ea3011a863253ed.jpeg",
     "static/media/Dice6.png": "/dice-game/static/media/Dice6.5c21f4951fcd38fb76f0.png",
     "static/media/Dice5.png": "/dice-game/static/media/Dice5.5d43c4f7633b3f0e90a7.png",
@@ -18,11 +18,11 @@
     "static/media/Dice1.png": "/dice-game/static/media/Dice1.f0c63472452e9a2b4322.png",
     "index.html": "/dice-game/index.html",
     "main.e231fd26.css.map": "/dice-game/static/css/main.e231fd26.css.map",
-    "main.3fb43f86.js.map": "/dice-game/static/js/main.3fb43f86.js.map",
+    "main.463bab0e.js.map": "/dice-game/static/js/main.463bab0e.js.map",
     "787.fd9f8f4d.chunk.js.map": "/dice-game/static/js/787.fd9f8f4d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e231fd26.css",
-    "static/js/main.3fb43f86.js"
+    "static/js/main.463bab0e.js"
   ]
 }
