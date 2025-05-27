@@ -12,7 +12,7 @@ const categoryDescriptions = {
   fullHouse: "Full House",
   smallStraight: "Small Straight",
   largeStraight: "Large Straight",
-  yahtzee: "Yahtzee",
+  strike: "Strike",
   chance: "Chance",
 };
 

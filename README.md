@@ -1,6 +1,6 @@
 # dice-game
 
-The objective of the game is to score points by rolling certain combinations of numbers on the dice. The rules of Yahtzee are as follows:
+The objective of the game is to score points by rolling certain combinations of numbers on the dice. The rules of Strike are as follows:
 
 The game is played with five dice.
 
@@ -32,5 +32,5 @@ Four of a Kind: Score the sum of all dice if you have at least four of the same 
 Full House: Score 25 points if you have three of a kind and a pair.
 Small Straight: Score 30 points if you have four consecutive numbers.
 Large Straight: Score 40 points if you have five consecutive numbers.
-Yahtzee: Score 50 points if you have all five dice showing the same number.
+Strike: Score 50 points if you have all five dice showing the same number.
 Chance: Score the sum of all dice regardless of what they show.

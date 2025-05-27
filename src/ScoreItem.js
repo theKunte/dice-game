@@ -39,9 +39,9 @@ export function calculateLowerTotal(scores) {
     fullHouse,
     smallStraight,
     largeStraight,
-    yahtzee,
+    strike, // was yahtzee
     chance,
-    // bonusYahtzee, // Add bonusYahtzee score
+    // bonusStrike, // was bonusYahtzee
   } = scores;
 
   let lowerTotal = 0;
@@ -61,14 +61,14 @@ export function calculateLowerTotal(scores) {
   if (largeStraight >= 0) {
     lowerTotal += largeStraight;
   }
-  if (yahtzee >= 0) {
-    lowerTotal += yahtzee;
+  if (strike >= 0) { // was yahtzee
+    lowerTotal += strike;
   }
   if (chance >= 0) {
     lowerTotal += chance;
   }
-  // if (bonusYahtzee >= 0) {
-  //   lowerTotal += bonusYahtzee; // Add bonusYahtzee score
+  // if (bonusStrike >= 0) {
+  //   lowerTotal += bonusStrike; // was bonusYahtzee
   // }
 
   return lowerTotal;
@@ -162,23 +162,23 @@ export const largeStraight = (diceValues) => {
   return 0;
 };
 
-export const yahtzee = (diceValues) => {
+export const strike = (diceValues) => {
   // Lets check if all values in the array are the same
   const firstValue = diceValues[0];
   const allSame = diceValues.every((value) => value === firstValue);
   if (allSame) {
-    // if all values are the same return yathzee score
+    // if all values are the same return strike score
     return 50;
   } else {
     return 0;
   }
 };
 
-// REMOVED Bonus Yathzee for the moment
-export const calculateBonusYahtzee = (scores, diceValues) => {
+// REMOVED Bonus Strike for the moment
+export const calculateBonusStrike = (scores, diceValues) => {
   let total = 0;
-  if (scores.yahtzee === 50) {
-    total = yahtzee(diceValues);
+  if (scores.strike === 50) {
+    total = strike(diceValues);
   }
   return total;
 };

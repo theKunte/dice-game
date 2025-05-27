@@ -2,7 +2,7 @@
 
 import { fullHouse, scoreFours } from "./ScoreItem.js";
 import { smallStraight, largeStraight } from "./ScoreItem.js";
-import { yahtzee, chance } from "./ScoreItem.js";
+import { strike, chance } from "./ScoreItem.js";
 import { scoreOnes } from "./ScoreItem.js";
 import { scoreTwos } from "./ScoreItem.js";
 import { scoreThree } from "./ScoreItem.js";
@@ -241,16 +241,16 @@ describe("largeStraight", () => {
   });
 });
 
-describe("yahtzee", () => {
+describe("strike", () => {
   it("returns 50 when all dice values are the same", () => {
     const diceValues = [6, 6, 6, 6, 6];
-    const result = yahtzee(diceValues);
+    const result = strike(diceValues);
     expect(result).toEqual(50);
   });
 
   it("returns 0 when not all dice values are the same", () => {
     const diceValues = [1, 2, 3, 4, 5];
-    const result = yahtzee(diceValues);
+    const result = strike(diceValues);
     expect(result).toEqual(0);
   });
 });

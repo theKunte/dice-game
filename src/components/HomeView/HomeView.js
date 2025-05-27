@@ -11,7 +11,7 @@ import FourOfAKind from "../../images/fourOfAKind.jpeg";
 import Chance from "../../images/chance.jpeg";
 import SmallStraight from "../../images/small.jpeg";
 import LargeStraight from "../../images/large.jpeg";
-import Yahtzee from "../../images/yahtzee.jpeg";
+import Strike from "../../images/strike.jpeg";
 import FullHouse from "../../images/fullHouse.png";
 import GameOverPopup from "../GameOverPopup";
 import DiceContainer from "../DiceContainer";
@@ -29,11 +29,11 @@ import {
   fullHouse,
   smallStraight,
   largeStraight,
-  yahtzee,
+  strike,
   chance,
   calculateUpperTotalWithBonus,
   calculateLowerTotal,
-  calculateBonusYahtzee,
+  calculateBonusStrike,
 } from "../../ScoreItem";
 import ScoreCategory from "../ScoreCategory";
 
@@ -52,9 +52,9 @@ const initialScores = {
   fullHouse: -1,
   smallStraight: -1,
   largeStraight: -1,
-  yahtzee: -1,
+  strike: -1,
   chance: -1,
-  bonusYahtzee: 0,
+  bonusStrike: 0,
   lowerTotal: 0,
   finalTotalScore: 0,
 };
@@ -123,8 +123,8 @@ function HomeView() {
       tempScore.largeStraight >= 0 &&
       tempScore.fullHouse >= 0 &&
       tempScore.chance >= 0 &&
-      tempScore.yahtzee >= 0 &&
-      tempScore.bonusYahtzee >= 0
+      tempScore.strike >= 0 &&
+      tempScore.bonusStrike >= 0
     ) {
       const lowerTotal = calculateLowerTotal(tempScore);
       tempScore["lowerTotal"] = lowerTotal;
@@ -142,7 +142,7 @@ function HomeView() {
       tempScore.largeStraight >= 0 &&
       tempScore.fullHouse >= 0 &&
       tempScore.chance >= 0 &&
-      tempScore.yahtzee >= 0
+      tempScore.strike >= 0
     ) {
       const lowerTotal = calculateLowerTotal(tempScore);
       const upperTotalWithBonus = calculateUpperTotalWithBonus(tempScore);
@@ -191,12 +191,12 @@ function HomeView() {
     }
   };
 
-  const whenYouSelectBonusYahtzee = () => {
+  const whenYouSelectBonusStrike = () => {
     const updatedScores = [...playerScores];
     const tempScore = { ...updatedScores[currentPlayer] };
-    if (tempScore.yahtzee >= 0 && tempScore.bonusYahtzee === -1) {
-      let score = calculateBonusYahtzee(tempScore, diceValues);
-      tempScore.bonusYahtzee = score;
+    if (tempScore.strike >= 0 && tempScore.bonusStrike === -1) {
+      let score = calculateBonusStrike(tempScore, diceValues);
+      tempScore.bonusStrike = score;
       updatedScores[currentPlayer] = tempScore;
       setPlayerScores(updatedScores);
     }
@@ -207,10 +207,7 @@ function HomeView() {
   // --- Game mode selection screen ---
   if (!gameMode) {
     return (
-      <div
-        className="container-fluid game-view"
-        style={{ textAlign: "center", marginTop: 40 }}
-      >
+      <div className="container-fluid game-view" style={{ textAlign: "center", marginTop: 40 }}>
         <h1
           style={{
             fontFamily: "'Segoe UI', Arial, sans-serif",
@@ -219,11 +216,48 @@ function HomeView() {
             color: "#2a5298",
             letterSpacing: "2px",
             marginBottom: "32px",
-            textShadow: "1px 2px 8px #e0e7ef",
-          }}
-        >
+            textShadow: "1px 2px 8px #e0e7ef"
+          }}>
           DICE GAME
         </h1>
+        {/* Rules List */}
+        <div
+          style={{
+            background: "#f8fbff",
+            borderRadius: "14px",
+            boxShadow: "0 2px 10px rgba(42,82,152,0.07)",
+            maxWidth: 520,
+            margin: "0 auto 32px auto",
+            padding: "24px 28px",
+            textAlign: "left",
+            color: "#1e3c72",
+            fontSize: "1.08rem",
+          }}
+        >
+          <h2 style={{ fontSize: "1.18rem", fontWeight: 600, marginBottom: 12, color: "#2a5298" }}>How to Play</h2>
+          <ol style={{ marginBottom: 16, paddingLeft: 22 }}>
+            <li>Each player takes turns rolling five dice up to three times per turn.</li>
+            <li>After each roll, choose which dice to keep and which to reroll.</li>
+            <li>At the end of the turn, select a scoring category (each can be used only once).</li>
+            <li>The player with the highest total score after all 13 rounds wins.</li>
+          </ol>
+          <div style={{ fontWeight: 600, marginBottom: 6 }}>Scoring Categories:</div>
+          <ul style={{ margin: 0, paddingLeft: 22 }}>
+            <li>Ones: Score the sum of all dice that show a 1.</li>
+            <li>Twos: Score the sum of all dice that show a 2.</li>
+            <li>Threes: Score the sum of all dice that show a 3.</li>
+            <li>Fours: Score the sum of all dice that show a 4.</li>
+            <li>Fives: Score the sum of all dice that show a 5.</li>
+            <li>Sixes: Score the sum of all dice that show a 6.</li>
+            <li>Three of a Kind: Score the sum of all dice if you have at least three of the same number.</li>
+            <li>Four of a Kind: Score the sum of all dice if you have at least four of the same number.</li>
+            <li>Full House: Score 25 points if you have three of a kind and a pair.</li>
+            <li>Small Straight: Score 30 points if you have four consecutive numbers.</li>
+            <li>Large Straight: Score 40 points if you have five consecutive numbers.</li>
+            <li>Strike: Score 50 points if you have all five dice showing the same number.</li>
+            <li>Chance: Score the sum of all dice regardless of what they show.</li>
+          </ul>
+        </div>
         <div style={{ margin: "32px 0" }}>
           <button
             style={{
@@ -238,7 +272,7 @@ function HomeView() {
               marginBottom: "18px",
               fontWeight: 600,
               boxShadow: "0 2px 12px rgba(42,82,152,0.13)",
-              transition: "background 0.2s",
+              transition: "background 0.2s"
             }}
             onClick={() => setGameMode("single")}
           >
@@ -257,21 +291,19 @@ function HomeView() {
               marginBottom: "18px",
               fontWeight: 600,
               boxShadow: "0 2px 12px rgba(196,99,183,0.13)",
-              transition: "background 0.2s",
+              transition: "background 0.2s"
             }}
             onClick={() => setGameMode("multi")}
           >
             👥 Two Player
           </button>
         </div>
-        <div
-          style={{
-            color: "#2a5298",
-            fontSize: "1.1rem",
-            marginTop: "24px",
-            opacity: 0.8,
-          }}
-        >
+        <div style={{
+          color: "#2a5298",
+          fontSize: "1.1rem",
+          marginTop: "24px",
+          opacity: 0.8
+        }}>
           Select a mode to start playing!
         </div>
       </div>
@@ -539,15 +571,15 @@ function HomeView() {
                 currentPlayer={currentPlayer}
               />
               <ScoreCategory
-                category={"yahtzee"}
-                image={Yahtzee}
-                scoreFunction={yahtzee}
+                category={"strike"}
+                image={Strike}
+                scoreFunction={strike}
                 diceValues={diceValues}
-                alt="YAHTZEE"
+                alt="Strike"
                 whenYouSelectTheScore={whenYouSelectTheScore}
                 enableScoring={enableScoring}
                 restartGame={restartGame}
-                score={scores.yahtzee}
+                score={scores.strike}
                 currentPlayer={currentPlayer}
               />
               <ScoreCategory
